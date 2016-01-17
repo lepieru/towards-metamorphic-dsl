@@ -1,0 +1,274 @@
+#+TITLE: Towards Metamorphic Domain-Specific Languages
+#+AUTHOR: Pierre Le Gall
+
+#+OPTIONS: toc:nil
+
+#+LATEX_CLASS: custom
+#+LATEX_CLASS_OPTIONS: [11pt]
+#+LATEX_HEADER: \input{header}
+#+LATEX_HEADER: \abstract{Dans ce document nous faissons l'état de l'art concernant les Domain-Specific Languages à l'aide de la litérature scientifique sur le sujet. Nous définissons le DSL, le comparons aux GPL, exposont les différentes catégories. Nous mettons en lumière différents critères de qualité proposés permettant une évaluation. La question de l'implémentation est aussi abordé, donnant une vision plus technique d'une solution de ce type. La diversités des formes étant évidentes, nous discuterons des perspectives d'avenir. Normalisation et uniformisation ou métamorphisme ?}
+
+* Introduction
+
+  Les premiers programmes numériques étaient développés directement en langage machine. En plus d'être compatible qu'avec un type particulier de machine, ce travail était ingrat et source d'erreur. L'apparition de l'assembleur a permis de rendre le code produit plus générique et /human-readable/ grâce à une abstration du code machine cible. L'arrivée des langages de programmation ont permis l'utilisation de concepts plus haut niveau tel que les types, les variables, les constantes, les listes, les functions, les structures, etc. qui permettent des constructions beaucoup plus proches de la vision que l'homme a d'un programme.
+
+  Certains langages de programmation ont par la suite été conçus pour mieux répondre à une problématique particulière ; c'était le but initial du COBOL [fn:Cobol-Accronym], qui tout en étant /Turing-complete/, est né dans l'optique de proposer un outil spécialisé dans la création d'applications de gestion. Mais pourquoi créer des outils pour ce cas utilisation particulièr ? Pourquoi réinventer la roue ? Pourquoi ne pas simplement avoir le choix de =Fortran= ou de =Lisp= ? Est-ce que être moins génériques ne revient pas seulement à créer des barrières ? Le fait est que les outils sont plus efficaces quand ils sont adaptés au domain d'application. C'est la raison du succès des /Domain-Specific Languages/. De nous jour, leur utilisation est devenu chose commune. Grâce l'abstraction qu'ils proposent, en plus d'être plus efficace, l'utilisateur non programmeur peut intéragir avec le système en ayant en tête les problématiques du domaine.
+
+  L'usage de l'informatique est simplifié grâce à eux. Pas la peine de réinventer la roue pour lancer un programme, on l'appelle via un shell en lui passant des options adéquates. Pas la peine de connaître le fonctionnement interne d'une base de donnée relationnel pour lui poser une question, nous apprenons le SQL. Pas la peine de comprendre le fonctionnement d'un moteur de rendu web pour créer un page web, nous apprenons HTML/CSS.
+
+  De nombreux articles ont pour sujet les /Domain-Specific Languages/. Tout en revenant sur les bases de qu'est-ce qu'un langage (section 2), cette bibliographie essaye de regrouper les différentes définition du DSL (section 3), tout en le compare aux /Global Purpose Languages/. Les deux grands types de DSL, externe et interne, seront exposés (section 4). Leurs critères de succès et d'échec dans les usages sont mis en lumière (section 6). Les solutions techniques d'implémentation seront aussi abordés (section 4). Suite à la mise en évidence de la diversité des syntaxes concrètes (section 7), il sera sujet de l'avenir dans le domaine (section 8).
+
+* Qu'est ce que sont les /Domain-Specific Languages/
+** La notion de langage
+
+   Un langage est la composition d'une syntaxe (sa forme) ainsi que d'une sémantique (son sens). On peut voir la syntaxe comme la donnée et la sémantique comme l'information, c'est-à-dire l'interprétation sur la donnée \cite{Harel-and-Rumpe-2004}. Cela s'applique à tous les langages, des langues naturelles (anglais, français, etc.) aux langages de programmation.
+
+*** La syntaxe
+  
+     La *syntaxe (concrète)* choisie est la représentation que l'on se fait du langage \cite{Fowler-2005}. On distingue deux types de syntaxe concrète : les syntaxes textuelles qui sont composés d'une suite de caractères et les syntaxes graphiques qui sont contruites avec des éléments plus visuelles tel que des fléches, des formes, etc. En mathématique, elles sont le plus souvent défini gràce à une grammaire [fn:Not-only-Grammars]. Une grammaire est un ensemble de règles écrite dans un langage formel (on parle de grammaire formelle). Ces règles décrivent comment former des « phrases » en fonction des « mots » rencontrés. Le langage BNF [fn:Yacc-and-Bison] est un exemple d'outil permettant la définition de grammaire \cite{Garshol-2008} (voir figure [[BNF-Example]]), mettant en évidence les symboles terminaux et non-terminaux de la syntaxe.
+
+    #+CAPTION: Exemple d'utilisation de BNF (Backus Naur Form) : définition de la représentation textuelle d'une valeur numérique (entier et flottant)
+    #+NAME: BNF-Example
+    #+BEGIN_SRC bnf
+    numeric := float | integer
+    float   := dstring '.' dstring | - dstring '.' dstring
+    integer := dstring | '-' dstring
+    dstring := digit dstring | digit
+    digit   := '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+    #+END_SRC
+
+    La syntaxe concrète s'oppose à la *syntaxe abstraite*. Cette dernière est une altération de la syntaxe concrète. Cette forme est structurée de façon à être adaptée à une utilisation par la machine. Elle prend très souvent la forme d'un arbre (appelé Arbre de Syntaxe Abstraite, /Abstract Syntax Tree/ ou /AST/) (voir figure [[Abstrac-Syntax-Tree-Example]]) où chaque noeuds représentent un élément, qui peuvent eux même être composés de plusieurs sous-éléments. Certains details de la syntaxe concrète peuvent être ôter. Il est donc possible d'arriver à un même AST avec des syntaxes concrètes différentes. On peut dire qu'un langage peut avoir deux syntaxes concrètes, ou deux langages qui partage la même syntaxe abstraite \cite{Fowler-2005}.
+
+    #+NAME: Abstract-Syntax-Tree-Exemple
+    #+CAPTION: Exemple d'arbre de syntax abstraite: représentation abstraite de la fonction f(n) = n * (n + 1) / 2 \cite{Harel-and-Rumpe-2004}
+    #+ATTR_LATEX: :width 4cm
+    [[./pictures/Abstract-Syntax-Tree-Example.png]]
+
+    Nous avons ici exposé le principe de syntaxe qui seul ne permet pas de donner du sens à un langage. L'étape suivante donc de définir la sémantique.
+
+*** La sémantique
+
+    La sémantique est le sens que l'on donne à un langage, à sa syntaxe. Grâce à l'analyse grammaticale, la machine est en possession de la structure de la syntaxe. C'est sur cette structure que l'on peut travailler pour définir la sémantique. Les mathématiques exposent les régles de transformation en sémantique opérationnelle, en sémantique dénotationnelle ou en sémantique axiomatique. Cela dit, le sens peut aussi être informel avec une définition en langue naturelle.
+
+** Définir le DSL
+
+   Les /Domain-Specific Languages/, aussi appelés /Little Languages/ \cite{Hudak-1996}, sont des langages sur mesure par rapport à un domaine d'application. Leurs raison d'être est d'exprimer au mieux ce domaine. En s'abstenant d'exposer les problématiques techniques, ils s'ouvrent à un « public plus large » \cite{Mernik-et-al-2005}. Un DSL adapté réduit considérablement le fossé entre le métier et les documents produits. Bien utilisés, ils deviennent un nouveau vecteur de communication.
+
+   Les DSL s'opposent aux /General Purpose Languages/ (GPL) ; c'est-à-dire les langages de programmation conçu pour but de résoudre un large panel de problèmes. Si ils sont pensé pour être génériques, les DSL diminus fortement le niveau d'abstraction réduisant les ambiguités \cite{Hudak-1996}. De ce fait, le DSL permet un gain de productivité important. L'étude de l'impact de ACA.NET \cite{Hermans-et-al-2009} donne en conclusion que l'utilisation de DSL permettent une baisse des coûts de développement et une meilleure réutilisabilité du code produit.
+
+   Malgré tout, la frontière entre GPL et DSL n'est pas nette, mais plutôt graduelle \cite{Voelter-2013, Mernik-et-al-2005}. Cependant, quelques caractéristiques ne trompent pas. En effet, si le DSL n'est pas forcément /Turing-complete/ et est potentiellement conçu pour une utilisation à cours terme, ce n'est jamais le cas pour un GPL (voir tableaux [[GPL-or-DSL]]).
+
+   #+NAME: GPL-or-DSL
+   #+CAPTION: Gradualité entre GPL et DSL \cite{Voelter-2013}
+   |                            | *GPLs*                         | *DSLs*                     |
+   |----------------------------+--------------------------------+----------------------------|
+   | *Domain*                   | large and complex              | smaller and well-defined   |
+   | *Language size*            | large                          | small                      |
+   | *Turing completeness*      | always                         | often not                  |
+   | *User-defined abstraction* | sophisticated                  | limited                    |
+   | *Execution*                | via intermediate GPL           | native                     |
+   | *Lifespan*                 | years to decades               | month to years             |
+   | *Designed by*              | guru or committee              | few engineers and experts  |
+   | *User community*           | large, anonymous and widspread | small, accessible an local |
+   | *Evolution*                | slow, often standardized       | fast-paced                 |
+   | *Incompatibility changes*  | almost impossible              | feasible                   |
+
+   \cite{Fowler-2005} cite plusieurs traditions dans le DSL, on y retrouve les /Unix Little Languages/ (mini-langages pour le système construit avec la tool-chain Unix), les Lisp (probablement l'exemple le plus fort pour exprimer un DSL dans le langage lui même), l'/Adaptive Model Object/ (très productif mais demande de connaître l'architecture du projet), l'XML (sa grammaire et ses outils de parsing disponibles mais cependant pas forcément facile à lire), ou encore les /GUI builders/ (permettant un syntaxe plus déclarative et moins procédurale). Ces outils sont puissants : les /Unix Little Languages/ permettent de configurer tout un système grâce à de simples fichiers textes. Les Lisp permettent de redéfinir toute une syntaxe dans le GPL lui même. L'/Adaptive Model Object/ permet de rendre le métier expressive dans une application programmé dans un langage orienté objet. L'XML permet de proposer une syntaxe concrète qui peut être réutiliser pour divers solutions. Et enfin les /GUI builders/ ont permis d'abstraire la déclaration des interface homme-machine (voir =HTML= ou encore =QML=).
+
+** Externe et interne
+
+   Les /Domain-Specific Languages/ se divisent en deux grande catégories : les DSL externes et les DSL internes.
+
+*** DSL externes
+
+    Les DSL externes sont construits /from scatch/. Les concepteurs ont la *liberté* de construire les éléments de la grammaire (en s'inspirant ou non de langages existants) ainsi que de sélectionner les principaux concepts applicables. Souvent accompagnés d'outils spécifiques, ils sont capables de fonctionner en */standalone/*. Cela permet de *s'affranchir de diverses contraintes*, notament celles du langage du coeur de solution métier grâce à *indépendance* ce nouveaux langage \cite{Karsai-et-al-2009}. \cite{Fowler-2005} liste plusieurs problèmes relatifs aux DSL externes. Ils commencent par créent une *barrière symbolique* avec le langage de base, ce qui rend l'intéropérabilité difficile. L'utilisateur aillant en main un langage « dégradé », il n'est pas évident de pouvoir effectuer une action hors de la portée du langage. Il continue en utilisant le terme *cacophonie des langages* : si un langage demande un effort d'apprentissage, peut-être que est-ce une mauvaise idée de les multiplier. Cependant, il ne faut pas oublier que ces langages ont pour but d'être simple, limitant la valeur de cette dernière critique.
+
+    #+NAME: External-DSL-example
+    #+CAPTION: Un exemple de DSL externe avec SQL
+    #+BEGIN_SRC sql
+      SELECT *
+        FROM book
+       WHERE published_in = 2011
+    ORDER BY title
+    #+END_SRC
+
+    Notation graphique, UML -> interne ou externe ?
+
+*** DSL internes
+
+    L'idée d'un DSL interne est d'*utiliser les capacités d'un GPL* pour exprimer un domaine. On parle aussi de /Embedded Domain-Specific Languages/ (EDSEL ou DSEL) [fn:Is-Embedded-DSL-equivalent-to-Internal-DSL] \cite{Hudak-1996}. De cette manière, il n'existe pas de *barrière symbolique*. L'utilisateur peut utiliser un GPL sans avoir à comprendre toutes ses subtilités. De ce point de vu, il n'y plus de limite, *toutes les capacités du langage hôte* sont disponibles. Toutes fois, il est possible de se perdre dans ce nuage de fonctionnalités \cite{Fowler-2005}. L'approche interne demande moins d'effort que l'approche externe \cite{Kamin-1998} pour les concepteurs, cela impactant les de *coûts de développement*. En effet, il est possible de profiter de l'intégration du GPL hôte (parser, debbuger, compilateur, coloration syntaxique, etc.) ; à noter que la solution finale *tend à être moins adapté* (ex. retours d'erreurs) qu'avec un DSL externe. Malheureusement, il se peut qu'il soit compliqué d'adapter un DSL aux *contraintes syntaxiques du GPL hôte* choisi. C'est le cas pour la plupart GPL avec une syntaxe inspiré du C \cite{Fowler-2005}.
+
+    #+NAME: Internal-DSL-example
+    #+CAPTION: Un exemple de DSL interne, équivalent du DSL externe (=SQL=) en figure [[External-DSL-example]], avec la bibliothèque =jOOQ= (=Java=)
+    #+BEGIN_SRC java
+    create.selectFrom(BOOK)
+          .where(BOOK.PUBLISHED_IN.eq(2011))
+          .orderBy(BOOK.TITLE)
+    #+END_SRC
+
+    \cite{Gibbons-and-Wu-2014} distinguent le DSL interne profond (/deep DSEL/) et peut profond (/shallow DSEL/). *TODO*
+
+*** Faire un choix
+
+    Pour faire le choix d'une solution, externe ou interne, il faut peser les pours et le contres qui dépendent de la situation la situation (voir figure *TODO*).
+
+    #+NAME: How-to-Choose-between-External-and-Internal-DSL
+    #+CAPTION: Diagramme aidant à faire le choix du DSL externe ou interne \cite{Mernik-et-al-2005}
+    # [[./pictures/How-to-Choose-between-External-and-Internal-DSL]].png
+
+* Succès et échecs
+
+  Nous abordons ici les comportements conseillés ou non dans le DSL, mettant le doigt sur les problématiques de la conception. Nous finirons pas présenter les critères de qualification d'un DSL.
+
+** Bonnes et mauvaises pratiques
+
+    Le design d'un /Domain-Specific Language/ requière des connaissances en développement de langage ainsi qu'une connaissance du domaine \cite{Mernik-et-al-2005}. C'est un point très important car le domaine est au centre du problème.
+
+    Pour apporter de la méthodologie dans la conception de DSL, \cite{Karsai-et-al-2009} proposent une ligne de conduite. Ils insistent sur le fait de se rapprocher des experts, ne pas hésiter à poser des questions. Il est conseillé des rester proche du domaine, de ne pas généraliser si cela ne semble utile à aucun cas clair d'utilisation. Il faut utiliser une notation descriptive, concis mais pas trop, et rendre possible les commentaires qui sont là pour corriger tout manque de clarté.
+
+    Si ces conseils semblent généralistes, ce n'est pas le cas des problèmes relevé par \cite{Kelly-and-Pohjonen-2009} grâce à une analyse de plusieur DSL. Si le manque de compréhension métier des problématiques est cité, les mauvaises pratiques les plus fréquentes restent : décider la solution initiale comme inaltérable ; laisser stagner le language ; et utiliser le code source comme modèle. Diverses choses sont aussi énoncées, parmis elles à éviter : mettre l'accent sur un sous-domaine ; pré-déterminer le paradigme ; ignorer le cas réel d'utilisation ; ou encore considérer que tout le monde comprend la solution.
+
+** Qualification du DSL
+
+   Il est compliqué de juger une chose sans critère précis. Bien que difficilement quatifiable, \cite{Karsai-et-al-2009} ont réunis les facteurs de succès qu'ils ont  retrouver dans la litérature sur les DSL. Ils sont : l'apprenabilité (L), la conviviality (U), l'expressivité (E), la réutilisabilité (R), le coût de développement (C) et la fiabilité (I) (voir tableau [[Success-Factors]]).
+
+   #+NAME: Success-Factors
+   #+CAPTION: Facteurs de succès proposé par \cite{Hermans-et-al-2009}
+   | *(L) Learnability*     | Developers have to learn an extra language,     |
+   |                        | which takes time and effort. Furthermore,       |
+   |                        | as he domain changes the DSL has ot evolve      |
+   |                        | and developers need to stay up-to-date.         |
+   | *(U) Usability*        | Tools and methods supporting the DSL should     |
+   |                        | be easy and convenient to use.                  |
+   | *(E) Expressiveness*   | Using a DSL, domain specific features can       |
+   |                        | be implemented compactly, however, the language |
+   |                        | is specific to that domain and limits the       |
+   |                        | possible scenarios that can be expressed.       |
+   | *(R) Reusability*      | With a DSL, reuse is possible at the model      |
+   |                        | level, making it easier ti reuse partial or     |
+   |                        | even entire solutions, rather than pieces of    |
+   |                        | source code.                                    |
+   | *(C) Development Cost* | The DSL hepts developers to model domain        |
+   |                        | concepts that otherwise are time-consuming to   |
+   |                        | implement. The corresponding source code is     |
+   |                        | generated automatically. The corresponding      |
+   |                        | sources code is generated automatically.        |
+   |                        | This lowers developement costs and shortens     |
+   |                        | time-to-market.                                 |
+   | *(I) Reliability*      | In addition toreducing development cost,        |
+   |                        | automation of large parts of the development    |
+   |                        | process leads to fewers errors.                 |
+
+   \cite{Albuquerque-et-al-2014} proposent la réutilisation des critères orientés sur une dimension cognitive de \cite{Blackwell-and-Green-2003}, où il existe une séparation en deux caractéristiques majeures : l'*expressivité* et la *brièveté*. L'expressivité (/expressiveness/)est la capacité du DSL à représenter les éléments du domaine (voir tableau [[Expressiveness]]). La brieveté (/conciseness/) est l'économie de terms dans la syntaxe (voir tableau [[Conciseness]]). Ces caractérisque sont opposés, les concepteurs doivent faire en sorte d'avoir un langage équilibré.
+
+   #+NAME: Expressiveness
+   #+CAPTION: Critères concernant l'expressivité proposés par \cite{Albuquerque-et-al-2014}
+   | Expressiveness            |                                                      |
+   |---------------------------+------------------------------------------------------|
+   | *Hidden Dependencies*     | Relevant relations between entities are not visible  |
+   | *Role-Expressiveness*     | The purpose of an entity is readily inferred         |
+   | *Abstraction*             | Type and availability of abstraction mechanisms      |
+   | *Closeness of Mapping*    | Closeness of representation to domain                |
+
+   #+NAME: Conciseness
+   #+CAPTION: Critères concernant la brièveté proposés par \cite{Albuquerque-et-al-2014}   
+   | Conciseness               |                                                      |
+   |---------------------------+------------------------------------------------------|
+   | *Viscosity*               | Resistance to change                                 |
+   | *Visibility*              | Ability to view entities easily                      |
+   | *Diffuseness*             | Verbosity of language                                |
+   | *Hard Mental Operations*  | High demand on cognitive resources                   |
+
+   Malheuresement, il est difficile d'identifier les forces et faibles d'un DSL lors de la phase de conception \cite{Albuquerque-et-al-2014}.
+
+* Outils et méthodes d'implémentations
+
+  Le sujet de cette section concerne les outils et méthodes d'implémentations. Nous parlerons des capacités de certains GPL pour accueillir des DSL, des design pattern utilisables dans la conception de DSL, ainsi que les /frameworks/ aidant la conception de DSL.
+
+** /Build-in facilities/
+
+   Les languages ne sont pas tous égaux face à la définition de DSL en interne. Bien que =Java= et =C#= (ou les languages à syntaxe typé C en général), bien que munies d'éléments tels que les annotations, sont bien moins flexible que des langage tel que =Lisp= et =Smalltalk=. C'est grâce à une syntaxe peu intrusive qu'un langage peut être plus « accueillant » \cite{Fowler-2005}. Les langages dynamiques (c'est-à-dire à type dynamique, par opposition aux langage statiques) sont aussi plus adapté. Un bon exemple est l'exploitation de la méta-programmation dans le framework web =Ruby on Rails= \cite{Fowler-2005}.
+
+   Comme dit plus haut, les dialectes de Lisp sont particulièrement flexible au niveau de leur syntaxe. Leur système de macros, permettent de donner une sémantique à une syntaxe interne très maléable (voir figure [[Lisp-Json-Reader]]).
+
+   #+NAME: Lisp-Json-Reader
+   #+CAPTION: Un exemple de flexibilité de la syntaxe Lisp avec json-reader
+   #+BEGIN_SRC lisp
+   (json-reader:enable-json-syntax)
+   (let ((x {
+              "foo": 1,
+              "bar": ["a", "b", "c"]
+              "baz": { foo: 42 }
+            } ))
+     (assert (hash-table-p x))
+     (assert (= (hash-table-count x) 3))
+     (assert (eql (gethash "foo" x) 1))
+     (assert (vectorp (gethash "bar" x)))
+     (assert (hash-table-p (gethash "baz" x))))
+   (json-reader:disable-json-syntax)
+   #+END_SRC
+
+   #+NAME: Lisp-Json-Reader
+   #+CAPTION: Un exemple des capacités de Smalltalk à accueillir un DSL avec ses methodes en plusieures parties
+   #+BEGIN_SRC smalltalk
+   "Exemple en Smalltalk"
+   #+END_SRC   
+
+** Patrons de conception
+
+   Les patrons de conception sont souvent de bonnes sources d'inspiration pour créer du logiciel « réutilisable ». Les plus utile pour la conception de compilateur et d'interpreteur de DSL sont réunis dans \cite{Spinellis-2000}. Parmis eux, le piggyback ; le pipeline (voir figure [[Pipeline-Pattern]]) ; le lexical processing ; l'extension à un language ; la spécialisation de langage ; transformation /source to source/ ; la représentation de la structure de donnée ; le front-end.
+
+   #+NAME: Pipeline-Pattern
+   #+CAPTION: Le patron de conception Pipeline \cite{Spinellis-2000}, permettant de chainer les différente opérations/transformations à effectuer sur le DSL en entrée.
+   [[./pictures/Pipeline-Pattern.png]]
+
+   Ces méthodes d'implémentations sont massivement utilisées dans les /frameworks/ aidant à la conception de DSL.
+
+** Bibliothèques et /frameworks/ *TODO*
+
+   /Scala LMS/ [fn:Scala-LMS], exploité par \cite{Rompf-et-al-2013}, permettant la légèreté du /shallow DSL/ et flexibilité du /deep DSL/.
+
+   Il existe plusieurs /frameworks/ aidant la conception de DSL. \cite{Voelter-2013} retient trois outils : MPS (/Meta Programming System/), XText et Spoofax+Stratego. Notion de /language workbench/ \cite{Fowler-2005}. \cite{Erdweg-et-al-2015} : évalution des outiles (dont MPS, XText et Spoofax). 
+
+   #+NAME: Parsing-and-Projectional-Styles
+   #+CAPTION: \cite{Voelter-2013}
+   #+ATTR_LATEX: :width 8cm
+   [[./pictures/Parsing-and-Projectional-Styles.png]]
+
+   #+NAME: Implementations-Style
+   #+CAPTION: \cite{Voelter-2013}
+   #+ATTR_LATEX: :width 8cm
+   [[./pictures/Implementations-Style.png]]
+   
+* Constats et perspectives
+
+  Les critères de qualité du DSL restent difficiles à mesurer \cite{Albuquerque-et-al-2014} et sont encore trop jeunes pour être utilisés industriellement pour les évaluations. Les études montrent l'impact positif qu'on les solutions de type /language workbench/ \cite{Fowler-2005}. Grâce à elles, la forme abstraite est plus facile à manipuler et toutes les informations ne sont pas afficher en même temps. Ce terme était déjà à l'époque définî comme la « nouvelle génération des feuilles de calculs » : un environnment ou l'utilisateur lambda peut rapidement devenir un utilisateur avancé. L'utilisation d'une syntaxe abstraite comme source (ex. MPS, utilisation d'artefacts éditables) permet d'uniformiser la forme ce qui répond à une problématique forte.
+
+  Jongler avec $n$ syntaxes (externes, et potentiellement plusieurs internes pour un même DSL) crée des barrières symboliques. De plus, certaines syntaxes on beaucoup de probléme à intégrer un DSL (ex. syntaxes type C) \cite{Stefik-and-Siebert-2013}. Cependant, ce n'est pas une solution toujours très adapté. Les sources textuelles vont sans doute perdurer notamment du fait que les /legacy codes/ ne peuvent être traduit à la main. \cite{Acher-et-al-2014} définissent le terme de /Metamorphic DSL/ avec l'expérience FAMILIAR. Le fait est que les syntaxes concrètes forcent le choix d'une forme qui n'est pas adapté à tous les cas d'utilisations. Le /Metamorphic DSL/ serait lui capable de passer d'une syntaxe concrète à une autre. La différence fondammentale à la solution type MPS, est que la source reste bien une syntaxe concrète.
+
+  Ces deux solutions ont une vision différente. Si le /language workbench/ a une vision très nouvelle, le /Metamorphic DSL/ pose un problème dont une solution serait applicable aux nombreux développements plus typiques.
+
+* Conclusion
+
+  * Résumé
+    - impact du DSL (coûts, qualité interne/externe, etc.)
+    - \cite{Fowler-2005} : les DSL rendent possible aux experts de comprendrent, et dans le meilleur des cas produirent, les régles de la logique métier
+  * Final 
+    - si leur implémentation est importante pour la qualité interne, leur design est crusial pour la qualité externe
+    - /language workbench/ tel qu'avec MPS -> uniformisation sur l'AST
+    - /metamorphic DSL/ -> 
+
+#+BEGIN_LATEX
+\newpage
+\bibliographystyle{apalike}
+\bibliography{references}
+#+END_LATEX
+
+* Footnotes
+
+[fn:Cobol-Accronym] Cobol pour /Common Business-Oriented Language/
+[fn:Yacc-and-Bison] Yacc et Bison sont deux équivalents informatique à BNF
+[fn:Not-only-Grammars] Les automates et les expressions régulière permettent aussi la définition de syntaxes
+[fn:Is-Embedded-DSL-equivalent-to-Internal-DSL] Le fait que les DSEL soit équivalents aux DSL internes est discuté dans la littérature
+[fn:cl-json-reader] cl-json-reader : https://github.com/qinix/cl-json-reader
+[fn:Scala-LMS] Scala-LMS : https://scala-lms.github.io/
