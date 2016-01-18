@@ -130,7 +130,7 @@
 
 ** Qualification du DSL
 
-   Il est compliqué de juger une chose sans critère précis. Bien que difficilement quatifiable, \cite{Karsai-et-al-2009} ont réunis les facteurs de succès qu'ils ont  retrouver dans la litérature sur les DSL. Ils sont : l'apprenabilité (L), la conviviality (U), l'expressivité (E), la réutilisabilité (R), le coût de développement (C) et la fiabilité (I) (voir tableau [[Success-Factors]]).
+   Il est compliqué de juger un DSL sans critère précis. \cite{Karsai-et-al-2009} ont réunis les différents facteurs de succès recontré dans la littérature sur les DSL. On y trouve : l'apprenabilité (L), la conviviality (U), l'expressivité (E), la réutilisabilité (R), le coût de développement (C) et la fiabilité (I) (voir tableau [[Success-Factors]]).
 
    #+NAME: Success-Factors
    #+CAPTION: Facteurs de succès proposé par \cite{Hermans-et-al-2009}
@@ -159,27 +159,25 @@
    |                        | automation of large parts of the development    |
    |                        | process leads to fewers errors.                 |
 
-   \cite{Albuquerque-et-al-2014} proposent la réutilisation des critères orientés sur une dimension cognitive de \cite{Blackwell-and-Green-2003}, où il existe une séparation en deux caractéristiques majeures : l'*expressivité* et la *brièveté*. L'expressivité (/expressiveness/)est la capacité du DSL à représenter les éléments du domaine (voir tableau [[Expressiveness]]). La brieveté (/conciseness/) est l'économie de terms dans la syntaxe (voir tableau [[Conciseness]]). Ces caractérisque sont opposés, les concepteurs doivent faire en sorte d'avoir un langage équilibré.
+   \cite{Albuquerque-et-al-2014} proposent la réutilisation des critères cognitifs de \cite{Blackwell-and-Green-2003}. Ils les sépararent en deux catégories : l'*expressivité* et la *brièveté*. L'expressivité (/expressiveness/) est la capacité du DSL à représenter les éléments du domaine (voir tableau [[Expressiveness]]). La brieveté (/conciseness/) est l'économie de termes dans la syntaxe (voir tableau [[Conciseness]]). Ces caractérisques étant opposés, les concepteurs doivent faire en sorte d'avoir un DSL équilibré. Malheuresement, il est difficile d'identifier ces forces et faibles de la phase de conception \cite{Albuquerque-et-al-2014}.
 
    #+NAME: Expressiveness
    #+CAPTION: Critères concernant l'expressivité proposés par \cite{Albuquerque-et-al-2014}
-   | Expressiveness            |                                                      |
-   |---------------------------+------------------------------------------------------|
-   | *Hidden Dependencies*     | Relevant relations between entities are not visible  |
-   | *Role-Expressiveness*     | The purpose of an entity is readily inferred         |
-   | *Abstraction*             | Type and availability of abstraction mechanisms      |
-   | *Closeness of Mapping*    | Closeness of representation to domain                |
+   | Expressiveness         |                                                     |
+   |------------------------+-----------------------------------------------------|
+   | *Hidden Dependencies*  | Relevant relations between entities are not visible |
+   | *Role-Expressiveness*  | The purpose of an entity is readily inferred        |
+   | *Abstraction*          | Type and availability of abstraction mechanisms     |
+   | *Closeness of Mapping* | Closeness of representation to domain               |
 
    #+NAME: Conciseness
    #+CAPTION: Critères concernant la brièveté proposés par \cite{Albuquerque-et-al-2014}   
-   | Conciseness               |                                                      |
-   |---------------------------+------------------------------------------------------|
-   | *Viscosity*               | Resistance to change                                 |
-   | *Visibility*              | Ability to view entities easily                      |
-   | *Diffuseness*             | Verbosity of language                                |
-   | *Hard Mental Operations*  | High demand on cognitive resources                   |
-
-   Malheuresement, il est difficile d'identifier les forces et faibles d'un DSL lors de la phase de conception \cite{Albuquerque-et-al-2014}.
+   | Conciseness              |                                    |
+   |--------------------------+------------------------------------|
+   | *Viscosity*              | Resistance to change               |
+   | *Visibility*             | Ability to view entities easily    |
+   | *Diffuseness*            | Verbosity of language              |
+   | *Hard Mental Operations* | High demand on cognitive resources |
 
 * Outils et méthodes d'implémentations
 
