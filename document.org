@@ -81,9 +81,11 @@
 
 *** DSL externes
 
-    Les DSL externes sont construits /from scatch/. Les concepteurs ont la *liberté* de construire les éléments de la grammaire (en s'inspirant ou non de langages existants) ainsi que de sélectionner les principaux concepts applicables. Souvent accompagnés d'outils spécifiques, ils sont capables de fonctionner en */standalone/*. Cela permet de *s'affranchir de diverses contraintes*, notament celles du langage du coeur de solution métier grâce à *indépendance* ce nouveaux langage \cite{Karsai-et-al-2009}. \cite{Fowler-2005} liste plusieurs problèmes relatifs aux DSL externes. Ils commencent par créent une *barrière symbolique* avec le langage de base, ce qui rend l'intéropérabilité difficile. L'utilisateur aillant en main un langage « dégradé », il n'est pas évident de pouvoir effectuer une action hors de la portée du langage. Il continue en utilisant le terme *cacophonie des langages* : si un langage demande un effort d'apprentissage, peut-être que est-ce une mauvaise idée de les multiplier. Cependant, il ne faut pas oublier que ces langages ont pour but d'être simple, limitant la valeur de cette dernière critique.
+    Les DSL externes sont construits /from scatch/. Les concepteurs ont la *liberté* de construire les éléments de la grammaire (en s'inspirant ou non de langages existants) ainsi que de sélectionner les principaux concepts applicables. Souvent accompagnés d'outils spécifiques, ils sont capables de fonctionner en */standalone/*. Cela permet de *s'affranchir de diverses contraintes*, notament celles du langage du coeur de solution métier grâce à *indépendance* ce nouveaux langage \cite{Karsai-et-al-2009}. \cite{Fowler-2005} liste plusieurs problèmes relatifs aux DSL externes. Ils commencent par créent une *barrière symbolique* avec le langage de base, ce qui rend l'intéropérabilité difficile. L'utilisateur aillant en main un langage limiter, il n'est pas évident de pouvoir effectuer une action hors de la portée du langage. Fowler continue en utilisant le terme *cacophonie des langages* : si un langage demande un effort d'apprentissage, peut-être que est-ce une mauvaise idée de les multiplier. Cependant, il ne faut pas oublier que ces langages ont pour but d'être simple, limitant la valeur de cette dernière critique.
 
-    #+NAME: External-DSL-example
+    Si un DSL (voir l'exemple avec SQL figure [[External-DSL-Example-with-SQL]]) limite l'utilisateur dans le cadre de la manipulation de données provenant de bases de données relationnelles, il ne faut pas voir cette contrainte comme un simple inconvénient. Ceci encourage l'écriture de code plus compréhensible en étant plus plus déclaratif dans un context bien défini. De plus, si l'utilisateur n'a pas accès à toutes le fonctionnalités du système, le DSL apporte une sécurité contre les maladresses. Si cela est aussi vrai pour le DSL interne, il l'est particulièrement pour le DSL externe qui restriend l'utilisateur dans le cadre du domaine.
+
+    #+NAME: External-DSL-Example-with-SQL
     #+CAPTION: Un exemple de DSL externe avec SQL
     #+BEGIN_SRC sql
       SELECT *
@@ -91,8 +93,6 @@
        WHERE published_in = 2011
     ORDER BY title
     #+END_SRC
-
-    Si le langage =SQL= (voir exemple [[External-DSL-Example-with-SQL]]) limité l'utilisateur dans le cadre de la manipulation de données provenant de bases de données relationnelles, il ne faut pas voir cette limitation comme un inconvénient. Elle encourage a être plus déclaratif tout en empéchant l'écriture de code « compliqué ». De plus, si l'utilisateur n'a pas accès à toutes le fonctionnalités du système, le DSL apporte une sécurité contre les maladresses. Si cela est aussi vrai pour le DSL interne, il l'est particulièrement pour le DSL externe qui restriend l'utilisateur dans un context..
 
     Notation graphique, UML -> interne ou externe ?
 
