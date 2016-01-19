@@ -96,6 +96,7 @@
 
 *** DSL internes
 
+    Gérer la communication entre plusieur langages est une tâche compliqué, ce qui a pour concéquence que les développeurs font souvent le choix du DSL interne \cite{Renggli-and-Girba-2009}.
     L'idée d'un DSL interne est d'*utiliser les capacités d'un GPL* pour exprimer un domaine. On parle aussi de /Embedded Domain-Specific Languages/ (EDSEL ou DSEL) [fn:Is-Embedded-DSL-equivalent-to-Internal-DSL] \cite{Hudak-1996}. De cette manière, il n'existe pas de *barrière symbolique*. L'utilisateur peut utiliser un GPL sans avoir à comprendre toutes ses subtilités. De ce point de vu, il n'y plus de limite, *toutes les capacités du langage hôte* sont disponibles. Toutes fois, il est possible de se perdre dans ce nuage de fonctionnalités \cite{Fowler-2005}. L'approche interne demande moins d'effort que l'approche externe \cite{Kamin-1998} pour les concepteurs, cela impactant les de *coûts de développement*. En effet, il est possible de profiter de l'intégration du GPL hôte (parser, debbuger, compilateur, coloration syntaxique, etc.) ; à noter que la solution finale *tend à être moins adapté* (ex. retours d'erreurs) qu'avec un DSL externe. Malheureusement, il se peut qu'il soit compliqué d'adapter un DSL aux *contraintes syntaxiques du GPL hôte* choisi. C'est le cas pour la plupart GPL avec une syntaxe inspiré du C \cite{Fowler-2005}.
 
     #+NAME: Internal-DSL-example
