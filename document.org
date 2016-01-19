@@ -184,7 +184,7 @@
 
   Le sujet de cette section concerne les outils et méthodes d'implémentations. Nous parlerons des capacités de certains GPL pour accueillir des DSL, des design pattern utilisables dans la conception de DSL, ainsi que les /frameworks/ aidant la conception de DSL.
 
-** /Build-in facilities/
+** Fonctionnalités des langages
 
    Les languages ne sont pas tous égaux face à la définition de DSL en interne. Bien que =Java= et =C#= (ou les languages à syntaxe typé C en général), bien que munies d'éléments tels que les annotations, sont bien moins flexible que des langage tel que =Lisp= et =Smalltalk=. C'est grâce à une syntaxe peu intrusive qu'un langage peut être plus « accueillant » \cite{Fowler-2005}. Les langages dynamiques (c'est-à-dire à type dynamique, par opposition aux langage statiques) sont aussi plus adapté. Un bon exemple est l'exploitation de la méta-programmation dans le framework web =Ruby on Rails= \cite{Fowler-2005}.
 
