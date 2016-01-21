@@ -48,7 +48,7 @@
 
 *** La sémantique
 
-    La sémantique est le sens que l'on donne à un langage, à sa syntaxe. Grâce à l'analyse grammaticale, la machine est en possession de la structure de la syntaxe. C'est sur cette structure que l'on peut travailler pour définir la sémantique. Les mathématiques exposent les règles de transformation en sémantique opérationnelle, en sémantique dénotationnelle ou en sémantique axiomatique. Cela dit, le sens peut aussi être informel avec une définition en langue naturelle.
+    La sémantique est le sens que l'on donne à un langage. Grâce à l'analyse grammaticale, un forme plus structurée de la syntaxe en entrée est obtenue. C'est sur cette structure que l'on peut travailler pour en déduire le comportement attendu. Les mathématiques exposent les règles de transformation en sémantique opérationnelle, en sémantique dénotationnelle ou en sémantique axiomatique que nous n'aborderons pas ici. Les programmes, appellés compiltateur, ont pour but de transformer cette structure de donnée en un autre langage, comme le langage machine par exemple. Cela dit, le sens peut être informel par une spécification via une langue naturelle.
 
 ** Définir le DSL
 
