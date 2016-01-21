@@ -263,11 +263,6 @@
    #+ATTR_LATEX: :width 8cm
    [[./pictures/Parsing-and-Projectional-Styles.png]]
 
-   #+NAME: Implementations-Style
-   #+CAPTION: \cite{Voelter-2013}
-   #+ATTR_LATEX: :width 8cm
-   [[./pictures/Implementations-Style.png]]
-   
 * Constats et perspectives
 
   Les critères de qualité du DSL restent difficiles à mesurer \cite{Albuquerque-et-al-2014} et sont encore trop jeunes pour être utilisés industriellement pour les évaluations. Les études montrent l'impact positif qu'on les solutions de type /language workbench/ intruduit par \cite{Fowler-2005}. Spoofax, Xtext et MPS sont des solutions techniques qui ont hérité de ce principe. Avec une solutions de type MPS, la forme abstraite est manipulée grâce aux diverses vues disponibles (voir figure [[Manipulating-representations-with-a-Language-Workbench]]). L'information est présentée sous différentes formes, permettant si besoin de cacher le contenu inutile. Cette vision était déjà à l'époque défini comme la « nouvelle génération de feuille de calcul » \cite{Fowler-2005} : un environnment ou l'utilisateur lambda peut rapidement devenir apte à user de fonctionnalités avancés. L'utilisation d'une syntaxe abstraite, comme artéfact éditable permet d'uniformiser la forme, ce qui répond à une problématique forte.
