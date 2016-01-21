@@ -117,6 +117,10 @@
 
     \cite{Gibbons-and-Wu-2014} distinguent le DSL interne peu profond (/shallow DSEL/) et profond (/deep DSEL/). Le /shallow DSEL/ est le fait de se servir de la syntaxe du langage hôte comme base de formalisation de notion du domaine. Si nous avons "=chat + chien=", cela doit aussi avoir du sens dans le langage hôte. À l'inverse le /deep DSEL/ ne se contente pas simplement d'exécuter la chaîne en entrée, il en crée un AST. Le comportement de cette structure peut être défini par la suite. Ce deuxième type de DSL nous donne plus de contrôle sur l'exécution des entrées.
 
+    #+NAME: DSL-Types
+    #+CAPTION: Les différents types de DSL (source : https://queue.acm.org/detail.cfm?id=2617811)
+    [[./pictures/DSL-Types.png]]
+
 *** Faire un choix
 
     Pour faire le choix d'une solution, externe ou interne, il faut peser les pours et le contres en fonction de la situation. La figure  X montre *TODO* …
