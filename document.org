@@ -232,17 +232,19 @@
 
 ** Patrons de conception
 
-   Les patrons de conception sont souvent de bonnes sources d'inspiration pour créer du logiciel « réutilisable ». Les plus utile pour la conception de compilateur et d'interpreteur de DSL sont réunis dans \cite{Spinellis-2000}. Parmis eux, le piggyback ; le pipeline (voir figure [[Pipeline-Pattern]]) ; le lexical processing ; l'extension à un language ; la spécialisation de langage ; transformation /source to source/ (voir figure [[Source-to-Source-Pattern]]) ;  la représentation de la structure de donnée ; le front-end.
+   Les patrons de conception sont souvent une bonne source d'inspiration pour créer du logiciel « réutilisable ». Les /pattern/ utiles pour la conception de compilateur et d'interpreteur de DSL sont réunis dans \cite{Spinellis-2000}. Parmis eux, le piggyback ; le pipeline ; le lexical processing ; l'extension à un language ; la spécialisation de langage ; transformation /source to source/ ; la représentation de la structure de donnée ; le /front-end/.
+
+   Le /pipeline/ (voir figure [[Pipeline-Pattern]]) *TODO* …
 
    #+NAME: Pipeline-Pattern
    #+CAPTION: Le patron de conception Pipeline \cite{Spinellis-2000}, permettant de chainer les différente opérations/transformations à effectuer sur le DSL en entrée.
    [[./pictures/Pipeline-Pattern.png]]
 
+   Le patron /source to source/ (voir figure [[Source-to-Source-Pattern]]) *TODO* …
+
    #+NAME: Source-to-Source-Pattern
    #+CAPTION: Le patron de conception /source to source/ \cite{Spinellis-2000} ayant pour principe de prendre le DSL en entrée et de le convertir en code source pour le langage hôte.
    [[./pictures/Source-to-Source-Pattern.png]]
-
-   Ces méthodes d'implémentations servent de base aux /frameworks/ facilitant la conception de DSL.
 
 ** Bibliothèques et /frameworks/ *TODO*
 
