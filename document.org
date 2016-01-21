@@ -24,7 +24,7 @@
    Un langage est la composition d'une syntaxe (sa forme) ainsi que d'une sémantique (son sens). On peut voir la syntaxe comme la donnée et la sémantique comme l'information, c'est-à-dire l'interprétation sur la donnée \cite{Harel-and-Rumpe-2004}. Cela s'applique à tous les langages, des langues naturelles (anglais, français, etc.) aux langages de programmation.
 
 *** La syntaxe
-  
+
      La *syntaxe (concrète)* choisie est la représentation que l'on se fait du langage \cite{Fowler-2005}. On distingue deux types de syntaxe concrète : les syntaxes textuelles qui sont composés d'une suite de caractères et les syntaxes graphiques qui sont contruites avec des éléments plus visuelles tel que des fléches, des formes, etc. En mathématique, elles sont le plus souvent défini gràce à une grammaire [fn:Not-only-Grammars]. Une grammaire est un ensemble de règles écrite dans un langage formel (on parle de grammaire formelle). Ces règles décrivent comment former des « phrases » en fonction des « mots » rencontrés. Le langage BNF [fn:Yacc-and-Bison] est un exemple d'outil permettant la définition de grammaire \cite{Garshol-2008} (voir figure [[BNF-Example]]), mettant en évidence les symboles terminaux et non-terminaux de la syntaxe.
 
     #+CAPTION: Exemple d'utilisation de BNF (Backus Naur Form) : définition de la représentation textuelle d'une valeur numérique (entier et flottant)
@@ -172,7 +172,7 @@
    | *Closeness of Mapping* | Closeness of representation to domain               |
 
    #+NAME: Conciseness
-   #+CAPTION: Critères concernant la brièveté proposés par \cite{Albuquerque-et-al-2014}   
+   #+CAPTION: Critères concernant la brièveté proposés par \cite{Albuquerque-et-al-2014}
    | Conciseness              |                                    |
    |--------------------------+------------------------------------|
    | *Viscosity*              | Resistance to change               |
