@@ -250,10 +250,16 @@
 
    /Scala LMS/ [fn:Scala-LMS], exploité par \cite{Rompf-et-al-2013}, permettant la légèreté du /shallow DSL/ et flexibilité du /deep DSL/.
 
-   Il existe plusieurs /frameworks/ aidant la conception de DSL. \cite{Voelter-2013} retient trois outils : MPS (/Meta Programming System/), XText et Spoofax+Stratego. Notion de /language workbench/ \cite{Fowler-2005}. \cite{Erdweg-et-al-2015} : évalution des outiles (dont MPS, XText et Spoofax). 
+   Il existe plusieurs /frameworks/ aidant la conception de DSL. \cite{Voelter-2013} retient trois /frameworks/ représentatif de l'état de l'art dans la conception de Domain-Specific Languages : Spoofax, Xtext et MPS (/Meta Programming System/).
+
+   Spoofax utilise plusieur meta-langages pour définir les différents éléments du langage : =SDF3= défini la syntaxe. =NaBL= crée des contexts dans le langage (imports, namespaces, scopes, etc.). =TS= spécifi les types, ce qui permet d'éviter les erreurs de à l'exécution. Et finalement =Stratego=, qui permet de donner une sémantique au langage.
+
+   Contrairement à Spoofax, Xtext réutilise au plus des outils préexistants. Il se sert d'un langage proche de =EBNF= pour définir la syntaxe concrète, de =EMF= pour la génération de code et de bibliothèque =Java= pour diverse problématiques.
+
+   Si Spoofax et Xtext se focalise sur le DSL textuel, MPS propose des intéractions plus visuelles comme la possibilité de manipuler des tableaux ou des schémas. Lors de l'utilisation de projection, si l'utilisateur voit la syntaxe concrète, l'édition de fait directement sur l'AST, ce qui permet de conserver la cohérence (voir figure [[Parsing-and-Projectional-Styles]]).
 
    #+NAME: Parsing-and-Projectional-Styles
-   #+CAPTION: \cite{Voelter-2013}
+   #+CAPTION: Sur la gauche le fonctionnement de Spoofax et Xtext et sur la droite le fonctionnement de MPS \cite{Voelter-2013}. Xtext peut adopter le comportement de droite mais ce n'est pas son mode par défaut.
    #+ATTR_LATEX: :width 8cm
    [[./pictures/Parsing-and-Projectional-Styles.png]]
 
