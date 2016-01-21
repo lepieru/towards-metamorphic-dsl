@@ -272,6 +272,10 @@
 
 * Conclusion
 
+  Le DSL est l'outil qui réconcili les domaines avec le code source. Les langages de programmation ont longtemps été des outils que seul les programmeurs pouvaient manipuler. En donnant une vrai place aux notions métiers, les experts ont la possibilité de produire et de communiquer via les sources comme média. Ils peuvent prendre le contrôle de la logique métier.
+
+  Ces pratiques ont démontré leurs impacts bénéfiques sur la productivité et les coûts. Cependant, faire le choix d'utiliser ou non un DSL n'est pas évident, tout comme les choix de conception de ce DSL. Une analyse préalable accompagné de bonnes pratiques doit être effectué. Si l'implémentation est importante pour une bonne qualité interne, le design du DSL est crucial en ce qui concerne la qualité externe.
+
   * Résumé
     - impact du DSL (coûts, qualité interne/externe, etc.)
     - \cite{Fowler-2005} : les DSL rendent possible aux experts de comprendrent, et dans le meilleur des cas produirent, les régles de la logique métier
