@@ -108,7 +108,7 @@
           .orderBy(CAT.NAME)
     #+END_SRC
 
-    \cite{Gibbons-and-Wu-2014} distinguent le DSL interne profond (/deep DSEL/) et peut profond (/shallow DSEL/). *TODO*
+    \cite{Gibbons-and-Wu-2014} distinguent le DSL interne peu profond (/shallow DSEL/) et profond (/deep DSEL/). Le /shallow DSL/ est le fait de se servir de la syntaxe du langage hôte comme base de formalisation de notion du domaine. Si nous avons "=chat + chien=", cela doit aussi avoir du sens dans le langage hôte. À l'inverse le /deep DSL/ ne se contente pas simplement d'exécuter la chaîne en entrée, il en crée un AST. Le comportement de cette structure peut être défini par la suite. Ce deuxième type de DSL nous donne plus de contrôle sur l'exécution des entrées.
 
 *** Faire un choix
 
