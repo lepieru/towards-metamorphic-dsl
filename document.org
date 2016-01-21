@@ -37,9 +37,9 @@
     digit   := '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
     #+END_SRC
 
-    La syntaxe concrète s'oppose à la *syntaxe abstraite*. Cette dernière est une altération de la syntaxe concrète. Cette forme est structurée de façon à être adaptée à une utilisation par la machine. Elle prend très souvent la forme d'un arbre (appelé Arbre de Syntaxe Abstraite, /Abstract Syntax Tree/ ou /AST/) (voir figure [[Abstrac-Syntax-Tree-Example]]) où chaque noeuds représentent un élément, qui peuvent eux même être composés de plusieurs sous-éléments. Certains details de la syntaxe concrète peuvent être ôter. Il est donc possible d'arriver à un même AST avec des syntaxes concrètes différentes. On peut dire qu'un langage peut avoir deux syntaxes concrètes, ou deux langages qui partage la même syntaxe abstraite \cite{Fowler-2005}.
+    La syntaxe concrète s'oppose à la *syntaxe abstraite*. Cette dernière est une altération de la syntaxe concrète. Cette forme est structurée de façon à être adaptée à une utilisation par la machine. Elle prend très souvent la forme d'un arbre (appelé Arbre de Syntaxe Abstraite, /Abstract Syntax Tree/ ou /AST/) (voir figure [[Abstract-Syntax-Tree-Example]]) où chaque noeuds représentent un élément, qui peuvent eux même être composés de plusieurs sous-éléments. Certains details de la syntaxe concrète peuvent être ôter. Il est donc possible d'arriver à un même AST avec des syntaxes concrètes différentes. On peut dire qu'un langage peut avoir deux syntaxes concrètes, ou deux langages qui partage la même syntaxe abstraite \cite{Fowler-2005}.
 
-    #+NAME: Abstract-Syntax-Tree-Exemple
+    #+NAME: Abstract-Syntax-Tree-Example
     #+CAPTION: Exemple d'arbre de syntax abstraite: représentation abstraite de la fonction f(n) = n * (n + 1) / 2 \cite{Harel-and-Rumpe-2004}
     #+ATTR_LATEX: :width 4cm
     [[./pictures/Abstract-Syntax-Tree-Example.png]]
@@ -294,7 +294,7 @@
 
 ** /Frameworks/
 
-   Il existe plusieurs /frameworks/ aidant la conception de DSL. \cite{Voelter-2013} retient trois /frameworks/ représentatif de l'état de l'art dans la conception de Domain-Specific Languages : Spoofax, Xtext et MPS (/Meta Programming System/). Ils font partis des outils de type /language workbench/ \cite{Fowler-2005} permettant l'application du /language-oriented programming/ \cite{Ward-1994}.
+   Il existe plusieurs /frameworks/ aidant la conception de DSL. \cite{Voelter-2013} retient trois /frameworks/ représentatif de l'état de l'art dans la conception de Domain-Specific Languages : Spoofax, Xtext et MPS (/Meta Programming System/). Ils font partis des outils de type /language workbench/ \cite{Fowler-2005} encadrant la pratique du /language-oriented programming/.
 
    Spoofax utilise plusieur meta-langages pour définir les différents éléments du langage : =SDF3= défini la syntaxe. =NaBL= crée des contexts dans le langage (imports, namespaces, scopes, etc.). =TS= spécifi les types, ce qui permet d'éviter les erreurs de à l'exécution. Et finalement =Stratego=, qui permet de donner une sémantique au langage.
 
@@ -331,7 +331,7 @@
 
   Ces pratiques ont démontré leurs impacts bénéfiques sur la productivité et les coûts. Cependant, faire le choix d'utiliser ou non un DSL n'est pas évident, tout comme les choix de conception de ce DSL. Une analyse préalable accompagné de bonnes pratiques doit être effectué. Si les environnements de /language workbench/ ont rendu accessible le /language-oriented programming/, le choix de la forme la plus adéquate reste préoccupant. C'est dans l'optique de répondre à ce problème que le concept de /Metamorphic DSL/ à vu le jour.
 
-  La capacité de passer de forme en forme serait-elle une nouvelle étape de l'évolution des DSL ?
+  La capacité de passer de forme en forme serait-elle une nouvelle étape dans l'évolution des /Domain-Specific Languages/ ?
 
 #+BEGIN_LATEX
 \newpage
