@@ -242,7 +242,39 @@
    #+ATTR_LATEX: :width 10cm
    [[./pictures/Smalltalk-as-the-most-Suitable.png]]
 
-   /Scala LMS/ [fn:Scala-LMS], exploité par \cite{Rompf-et-al-2013}, permettant la légèreté du /shallow DSL/ et flexibilité du /deep DSL/.
+   LMS (/Lightweight Modular Staging/) est un système de génération de code à l'exécution pour le langage Scala \cite{Rompf-and-Odersky-2012}. En associant l'agilité que propose le DSL et les transpositions de code plus rapide d'exécution pour la machine, les programmes écrits en Scala peuvent être plus rapide que l'équivalent en C écrit à main. On retrouve ici le principe du /deep DSEL/. La figure [[Scala-LMS-Result]] montre le résultat de l'exécution de code en figure [[Scala-LMS-Source]] avec LMS.
+
+   #+NAME: Scala-LMS-Source
+   #+CAPTION: Exemple d'utilisation de LMS (source : scala-lms.github.io)
+   #+BEGIN_SRC scala
+   class Vector[T:Numeric:Manifest](val data: Rep[Array[T]]) {
+     def foreach(f: Rep[T] => Rep[Unit]): Rep[Unit] = {
+       for (i <- 0 until data.length) f(data(i))
+     }
+     def sumIf(f: Rep[T] => Rep[Boolean]) = {
+       var n = zero[T]
+       foreach(x => if (f(x)) n += x)
+       return n
+     }
+   }
+
+   val v: Vector[Double] = ...
+   println(v.sumIf(_ > 0))
+   #+END_SRC
+
+   #+NAME: Scala-LMS-Result
+   #+CAPTION: Code généré à l'exécution (source : https://scala-lms.github.io)
+   #+BEGIN_SRC scala
+   var n: Double = 0.0
+   var i: Int = 0
+   val end = data.length
+   while (i < end) {
+     val x = data(i)
+     val c = x > 0
+     if (c) n += x
+   }
+   println(n)
+   #+END_SRC
 
 ** Patrons de conception
 
