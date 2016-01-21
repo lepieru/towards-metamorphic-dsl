@@ -48,7 +48,7 @@
 
 *** La sémantique
 
-    La sémantique est le sens que l'on donne à un langage, à sa syntaxe. Grâce à l'analyse grammaticale, la machine est en possession de la structure de la syntaxe. C'est sur cette structure que l'on peut travailler pour définir la sémantique. Les mathématiques exposent les régles de transformation en sémantique opérationnelle, en sémantique dénotationnelle ou en sémantique axiomatique. Cela dit, le sens peut aussi être informel avec une définition en langue naturelle.
+    La sémantique est le sens que l'on donne à un langage, à sa syntaxe. Grâce à l'analyse grammaticale, la machine est en possession de la structure de la syntaxe. C'est sur cette structure que l'on peut travailler pour définir la sémantique. Les mathématiques exposent les règles de transformation en sémantique opérationnelle, en sémantique dénotationnelle ou en sémantique axiomatique. Cela dit, le sens peut aussi être informel avec une définition en langue naturelle.
 
 ** Définir le DSL
 
@@ -108,11 +108,11 @@
           .orderBy(CAT.NAME)
     #+END_SRC
 
-    \cite{Gibbons-and-Wu-2014} distinguent le DSL interne peu profond (/shallow DSEL/) et profond (/deep DSEL/). Le /shallow DSL/ est le fait de se servir de la syntaxe du langage hôte comme base de formalisation de notion du domaine. Si nous avons "=chat + chien=", cela doit aussi avoir du sens dans le langage hôte. À l'inverse le /deep DSL/ ne se contente pas simplement d'exécuter la chaîne en entrée, il en crée un AST. Le comportement de cette structure peut être défini par la suite. Ce deuxième type de DSL nous donne plus de contrôle sur l'exécution des entrées.
+    \cite{Gibbons-and-Wu-2014} distinguent le DSL interne peu profond (/shallow DSEL/) et profond (/deep DSEL/). Le /shallow DSEL/ est le fait de se servir de la syntaxe du langage hôte comme base de formalisation de notion du domaine. Si nous avons "=chat + chien=", cela doit aussi avoir du sens dans le langage hôte. À l'inverse le /deep DSEL/ ne se contente pas simplement d'exécuter la chaîne en entrée, il en crée un AST. Le comportement de cette structure peut être défini par la suite. Ce deuxième type de DSL nous donne plus de contrôle sur l'exécution des entrées.
 
 *** Faire un choix
 
-    Pour faire le choix d'une solution, externe ou interne, il faut peser les pours et le contres qui dépendent de la situation la situation (voir figure *TODO*).
+    Pour faire le choix d'une solution, externe ou interne, il faut peser les pours et le contres en fonction de la situation. La figure  X montre *TODO* …
 
     #+NAME: How-to-Choose-between-External-and-Internal-DSL
     #+CAPTION: Diagramme aidant à faire le choix du DSL externe ou interne \cite{Mernik-et-al-2005}
@@ -288,7 +288,7 @@
 
   Ces pratiques ont démontré leurs impacts bénéfiques sur la productivité et les coûts. Cependant, faire le choix d'utiliser ou non un DSL n'est pas évident, tout comme les choix de conception de ce DSL. Une analyse préalable accompagné de bonnes pratiques doit être effectué. Si les environnements de /language workbench/ ont rendu accessible le /language-oriented programming/, le choix de la forme la plus adéquate reste préoccupant. C'est dans l'optique de répondre à ce problème que le concept de /Metamorphic DSL/ à vu le jour.
 
-  La capacité de passer de forme en forme serait-elle la nouvelle étape de l'évolution des DSL ?
+  La capacité de passer de forme en forme serait-elle une nouvelle étape de l'évolution des DSL ?
 
 #+BEGIN_LATEX
 \newpage
