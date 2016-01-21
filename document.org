@@ -262,7 +262,7 @@
 
 ** /Frameworks/
 
-   Il existe plusieurs /frameworks/ aidant la conception de DSL. \cite{Voelter-2013} retient trois /frameworks/ représentatif de l'état de l'art dans la conception de Domain-Specific Languages : Spoofax, Xtext et MPS (/Meta Programming System/).
+   Il existe plusieurs /frameworks/ aidant la conception de DSL. \cite{Voelter-2013} retient trois /frameworks/ représentatif de l'état de l'art dans la conception de Domain-Specific Languages : Spoofax, Xtext et MPS (/Meta Programming System/). Ils font partis des outils de type /language workbench/ \cite{Fowler-2005} permettant l'application du /language-oriented programming/ \cite{Ward-1994}.
 
    Spoofax utilise plusieur meta-langages pour définir les différents éléments du langage : =SDF3= défini la syntaxe. =NaBL= crée des contexts dans le langage (imports, namespaces, scopes, etc.). =TS= spécifi les types, ce qui permet d'éviter les erreurs de à l'exécution. Et finalement =Stratego=, qui permet de donner une sémantique au langage.
 
