@@ -270,11 +270,21 @@
    
 * Constats et perspectives
 
-  Les critères de qualité du DSL restent difficiles à mesurer \cite{Albuquerque-et-al-2014} et sont encore trop jeunes pour être utilisés industriellement pour les évaluations. Les études montrent l'impact positif qu'on les solutions de type /language workbench/ \cite{Fowler-2005}. Avec celles-ci, la forme abstraite est plus facile à manipuler grâce aux diverses vues disponible pour afficher l'information (leur forme et leur contenu pouvant être différent selon le cas). Cette vision était déjà à l'époque définî comme la « nouvelle génération des feuilles de calculs » \cite{Fowler-2005} : un environnment ou l'utilisateur lambda peut rapidement devenir apte à user de fonctionnalités avancés. L'utilisation d'une syntaxe abstraite, comme source (ex. MPS, utilisation d'artefacts éditables) permet d'uniformiser la forme, ce qui répond à une problématique forte.
+  Les critères de qualité du DSL restent difficiles à mesurer \cite{Albuquerque-et-al-2014} et sont encore trop jeunes pour être utilisés industriellement pour les évaluations. Les études montrent l'impact positif qu'on les solutions de type /language workbench/ intruduit par \cite{Fowler-2005}. Spoofax, Xtext et MPS sont des solutions techniques qui ont hérité de ce principe. Avec une solutions de type MPS, la forme abstraite est manipulée grâce aux diverses vues disponibles (voir figure [[Manipulating-representations-with-a-Language-Workbench]]). L'information est présentée sous différentes formes, permettant si besoin de cacher le contenu inutile. Cette vision était déjà à l'époque défini comme la « nouvelle génération de feuille de calcul » \cite{Fowler-2005} : un environnment ou l'utilisateur lambda peut rapidement devenir apte à user de fonctionnalités avancés. L'utilisation d'une syntaxe abstraite, comme artéfact éditable permet d'uniformiser la forme, ce qui répond à une problématique forte.
 
-  Jongler avec $n$ syntaxes (externes, et potentiellement plusieurs internes pour un même DSL) crée des barrières symboliques. De plus, certaines syntaxes on beaucoup de problémes à intégrer un DSL (ex. syntaxes type C) \cite{Stefik-and-Siebert-2013}. Le /language workbench/ n'est pas toujours une solution. Les sources textuelles vont sans doute perdurer notamment du fait que les /legacy codes/ ne peuvent être traduit à la main. \cite{Acher-et-al-2014} définissent le terme de /Metamorphic DSL/ avec l'expérience FAMILIAR. Le fait est que les syntaxes concrètes forcent le choix d'une forme qui n'est pas adapté à tous les cas d'utilisations. Le /Metamorphic DSL/ serait capable de passer d'une syntaxe concrète à une autre. La différence fondammentale avec une solution type MPS est que la source reste source la forme d'une syntaxe textuelle concrète.
+  #+NAME: Manipulating-representations-with-a-Language-Workbench
+  #+CAPTION: Manipulation des représentation avec le /language workbench/ \cite{Fowler-2005}.
+  #+ATTR_LATEX: :width 13cm
+  [[./pictures/Manipulating-representations-with-a-Language-Workbench.png]]
 
-  Ces deux solutions ont une vision différente. Si le /language workbench/ a une approche très nouvelle du développement logiciel, le /Metamorphic DSL/ pose un problème dont une solution serait applicable à de nombreux outils logiciels plus ordinaires.
+  Jongler avec $n$ syntaxes (externes, et potentiellement plusieurs internes pour un même DSL) crée des barrières symboliques. Les outils issue du /language workbench/ ne sont pas toujours une solution acceptable car il peut être difficile de savoir quelle forme adopter. \cite{Acher-et-al-2014} définissent le terme de /Metamorphic DSL/ avec l'expérience FAMILIAR. Le fait est que les syntaxes concrètes forcent le choix d'une forme qui n'est pas adapté à tous les cas d'utilisations. Le /Metamorphic DSL/ conceptualise la capacité d'un DSL de passer d'une syntaxe concrète à une autre selon le cas d'utilisation (tâche à effectuer, outil utilisé), permettant ainsi de ne pas avoir à choisir une mais plutôt plusieur formes (voir figure [[Metamorphic-DSL-Usecase]]).
+
+  #+NAME: Metamorphic-DSL-Usecase
+  #+CAPTION: Cas d'utilisation du /Metamorphic DSL/ \cite{Acher-et-al-2014}.
+  #+ATTR_LATEX: :width 15cm
+  [[./pictures/Metamorphic-DSL-Usecase.png]]
+
+  Ces deux solutions ont une vision différente. Si le /language workbench/ propose une forme plus approprié pour un probléme donné, le /Metamorphic DSL/ donne le choix de la forme que peut prendre un DSL selon le cas d'utilisation.
 
 * Conclusion
 
