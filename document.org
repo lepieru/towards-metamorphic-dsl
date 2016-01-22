@@ -6,7 +6,7 @@
 #+LATEX_CLASS: custom
 #+LATEX_CLASS_OPTIONS: [11pt]
 #+LATEX_HEADER: \input{header}
-#+LATEX_HEADER: \abstract{Dans ce document nous produisons un état de l'art des languages dédiés (aussi appelés DSLs pour Domain-Specific Languages) à l'aide de la littérature scientifique sur le sujet. Nous définissons les DSLs, les comparons aux languages généraux (ou GPLs pour General Purpose Languages) et exposons les différentes catégories de DSLs. Nous mettons en lumière différents critères de qualité proposés permettant une évaluation des DSLs. La question de l'implémentation d'un DSL est aussi abordé, donnant une vision plus technique d'une solution de ce type. La diversités des formes étant évidentes, nous discuterons des perspectives d'avenir. Normalisation et uniformisation ou métamorphisme ?}
+#+LATEX_HEADER: \abstract{Dans ce document nous produisons un état de l'art des languages dédiés (aussi appelés DSL pour \textit{Domain-Specific Languages}) à l'aide de la littérature scientifique sur le sujet. Nous définissons les DSL, les comparons aux languages généraux (ou GPL pour \textit{General Purpose Languages}) et exposons les différentes catégories de DSL. Nous mettons en lumière différents critères de qualité proposés permettant une évaluation des DSL. Les solutions techniques d'implémentation d'un DSL sont aussi abordées. La diversité des formes possibles d'un même DSL est avérée, c'est-à-dire qu'un même domaine peut être représenté via plusieurs syntaxes concrètes. Si une uniformisation de la forme permet de dissimuler le problème, la notion de DSL métamorphique accepte cette diversité. La capacité de passer de forme en forme serait-elle la nouvelle étape dans l'évolution des \textit{Domain-Specific Languages} ?}
 
 * Introduction
 
