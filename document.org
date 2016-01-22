@@ -6,7 +6,7 @@
 #+LATEX_CLASS: custom
 #+LATEX_CLASS_OPTIONS: [11pt]
 #+LATEX_HEADER: \input{header}
-#+LATEX_HEADER: \abstract{Dans ce document nous faisons l'état de l'art concernant les Domain-Specific Languages (DSLs) à l'aide de la littérature scientifique sur le sujet. Nous définissons les DSLs, les comparons aux General Purpose Languages (GPLs) et exposons les différentes catégories. Nous mettons en lumière différents critères de qualité proposés permettant une évaluation des DSLs. La question de l'implémentation d'un DSL est aussi abordé, donnant une vision plus technique d'une solution de ce type. La diversités des formes étant évidentes, nous discuterons des perspectives d'avenir. Normalisation et uniformisation ou métamorphisme ?}
+#+LATEX_HEADER: \abstract{Dans ce document nous produisons un état de l'art des languages dédiés (aussi appelés DSLs pour Domain-Specific Languages) à l'aide de la littérature scientifique sur le sujet. Nous définissons les DSLs, les comparons aux languages généraux (ou GPLs pour General Purpose Languages) et exposons les différentes catégories de DSLs. Nous mettons en lumière différents critères de qualité proposés permettant une évaluation des DSLs. La question de l'implémentation d'un DSL est aussi abordé, donnant une vision plus technique d'une solution de ce type. La diversités des formes étant évidentes, nous discuterons des perspectives d'avenir. Normalisation et uniformisation ou métamorphisme ?}
 
 * Introduction
 
