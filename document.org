@@ -18,7 +18,7 @@
 
   De nombreux articles ont pour sujet les /Domain-Specific Languages/. Tout en revenant sur les bases de qu'est-ce qu'un langage (section 2), cette bibliographie essaye de regrouper les différentes définition du DSL (section 3), tout en le comparant aux /Global Purpose Languages/. Les deux grands types de DSL, externe et interne, seront exposés (section 4). Leurs critères de succès et d'échec dans les usages sont mis en lumière (section 6). Les solutions techniques d'implémentation seront aussi abordés (section 4). Suite à la mise en évidence de la diversité des syntaxes concrètes (section 7), il sera sujet de l'avenir dans le domaine (section 8).
 
-* Qu'est ce que sont les /Domain-Specific Languages/
+* Les /Domain-Specific Languages/
 ** La notion de langage
 
    Un langage est la composition d'une syntaxe (sa forme) ainsi que d'une sémantique (son sens). On peut voir la syntaxe comme la donnée et la sémantique comme l'information, c'est-à-dire l'interprétation sur la donnée \cite{Harel-and-Rumpe-2004}. Cela s'applique à tous les langages, des langues naturelles (anglais, français, etc.) aux langages de programmation.
@@ -88,7 +88,7 @@
 
 *** DSL externes
 
-    Les DSL externes sont construits /from scatch/. Les concepteurs ont la *liberté* de construire les éléments de la grammaire (en s'inspirant ou non de langages existants) ainsi que de sélectionner les principaux concepts applicables. Souvent accompagnés d'outils spécifiques, ils sont capables de fonctionner en */standalone/*. Cela permet de *s'affranchir de diverses contraintes*, notamment celles du langage au coeur de la solution métier \cite{Karsai-et-al-2009}. Ce nouveau langage est *indépendant*. \cite{Fowler-2005} liste plusieurs problèmes relatifs aux DSL externes. Ils commencent par créent une *barrière symbolique* avec le langage de base, ce qui rend l'intéropérabilité difficile. L'utilisateur aillant en main un langage limiter, il n'est pas évident de pouvoir effectuer une action hors de la portée du langage. Fowler continue en utilisant le terme *cacophonie des langages* : si un langage demande un effort d'apprentissage, peut-être que est-ce une mauvaise idée de les multiplier. Cependant, il ne faut pas oublier que ces langages ont pour but d'être simple, limitant la valeur de cette dernière critique.
+    Les DSL externes sont construits à l'aide outils semblables à ceux utiliser pour les GPL. Les concepteurs ont la *liberté* de construire les éléments de la grammaire (en s'inspirant ou non de langages existants) ainsi que de sélectionner les principaux concepts applicables. Souvent accompagnés d'outils spécifiques, ils sont capables de fonctionner en */standalone/*. Cela permet de *s'affranchir de diverses contraintes*, notamment celles du langage au coeur de la solution métier \cite{Karsai-et-al-2009}. Ce nouveau langage est *indépendant*. \cite{Fowler-2005} liste plusieurs problèmes relatifs aux DSL externes. Ils commencent par créent une *barrière symbolique* avec le langage de base, ce qui rend l'intéropérabilité difficile. L'utilisateur aillant en main un langage limiter, il n'est pas évident de pouvoir effectuer une action hors de la portée du langage. Fowler continue en utilisant le terme *cacophonie des langages* : si un langage demande un effort d'apprentissage, peut-être que est-ce une mauvaise idée de les multiplier. Cependant, il ne faut pas oublier que ces langages ont pour but d'être simple, limitant la valeur de cette dernière critique.
 
     Si un DSL (voir l'exemple avec SQL figure [[External-DSL-Example-with-SQL]]) limite l'utilisateur dans le cadre de la manipulation de données provenant de bases de données relationnelles, il ne faut pas voir cette contrainte comme un simple inconvénient. Ceci encourage l'écriture de code plus compréhensible en étant plus plus déclaratif dans un contexte bien défini. De plus, si l'utilisateur n'a pas accès à toutes le fonctionnalités du système, le DSL est aussi une sécurité contre les maladresses. Si cela est aussi vrai pour le DSL interne, il l'est particulièrement pour le DSL externe qui restreint l'utilisateur dans le cadre du domaine.
 
@@ -123,7 +123,7 @@
 
 *** Faire un choix
 
-    Pour faire le choix d'une solution, externe ou interne, il faut peser le pour et le contre en fonction de la situation. La figure [[How-to-Choose-between-External-and-Internal-DSL]] pose jusqu'à quatre questions pour faire son choix. Le DSL interne est fortement déconseillé si il y a pas de besoins de AVOPT [fn:AVOPT] et si une notation du domaine doit être respecté strictement.
+    Pour faire le choix d'une solution, externe ou interne, il faut peser le pour et le contre en fonction de la situation. La figure [[How-to-Choose-between-External-and-Internal-DSL]] pose jusqu'à quatre questions pour faire son choix. Le DSL interne est déconseillé par \cite{Mernik-el-al-2005} si les notations du domaine doit être strictement respectés et si il y a pas de besoins d'AVOPT (analyse, vérification, optimisation, parallélisation et transformation). Si il est souvent difficile de respecter la syntaxe du domaine dans un GPL, le /deep DSL/ offre la possiblité de travaillé sur la syntaxe (vérification, transformation, /etc./), rendant cette deuxième condition discutable.
 
     #+NAME: How-to-Choose-between-External-and-Internal-DSL
     #+CAPTION: Diagramme aidant à faire le choix du DSL externe ou interne \cite{Mernik-et-al-2005}
@@ -330,6 +330,5 @@
 [fn:Yacc-and-Bison] Yacc et Bison sont deux équivalents informatique à BNF
 [fn:Not-only-Grammars] Les automates et les expressions régulière permettent aussi la définition de syntaxes
 [fn:Is-Embedded-DSL-equivalent-to-Internal-DSL] Le fait que les DSEL soit équivalents aux DSL internes est discuté dans la littérature
-[fn:AVOPT] AVOPT pour analyse, vérification, optimisation, parallélisation et transformation
 [fn:cl-json-reader] cl-json-reader : https://github.com/qinix/cl-json-reader
 [fn:Scala-LMS] Scala-LMS : https://scala-lms.github.io/
