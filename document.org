@@ -123,7 +123,7 @@
 
 *** Faire un choix
 
-    Pour faire le choix d'une solution, externe ou interne, il faut peser le pour et le contre en fonction de la situation. La figure [[How-to-Choose-between-External-and-Internal-DSL]] pose jusqu'à quatre questions pour faire son choix. Le DSL interne est déconseillé par \cite{Mernik-el-al-2005} si les notations du domaine doit être strictement respectés et si il y a pas de besoins d'AVOPT (analyse, vérification, optimisation, parallélisation et transformation). Si il est souvent difficile de respecter la syntaxe du domaine dans un GPL, le /deep DSL/ offre la possiblité de travaillé sur la syntaxe (vérification, transformation, /etc./), rendant cette deuxième condition discutable.
+    Pour faire le choix d'une solution, externe ou interne, il faut peser le pour et le contre en fonction de la situation. La figure [[How-to-Choose-between-External-and-Internal-DSL]] pose jusqu'à quatre questions pour faire son choix. Le DSL interne est déconseillé par \cite{Mernik-et-al-2005} si les notations du domaine doit être strictement respectés et si il y a pas de besoins d'AVOPT (analyse, vérification, optimisation, parallélisation et transformation). Si il est souvent difficile de respecter la syntaxe du domaine dans un GPL, le /deep DSL/ offre la possiblité de travaillé sur la syntaxe (vérification, transformation, /etc./), rendant cette deuxième condition discutable.
 
     #+NAME: How-to-Choose-between-External-and-Internal-DSL
     #+CAPTION: Diagramme aidant à faire le choix du DSL externe ou interne \cite{Mernik-et-al-2005}
