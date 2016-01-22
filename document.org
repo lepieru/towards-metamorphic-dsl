@@ -123,11 +123,12 @@
 
 *** Faire un choix
 
-    Pour faire le choix d'une solution, externe ou interne, il faut peser les pours et le contres en fonction de la situation. La figure  X montre *TODO* …
+    Pour faire le choix d'une solution, externe ou interne, il faut peser les pours et le contres en fonction de la situation. La figure [[How-to-Choose-between-External-and-Internal-DSL]] pose jusqu'à quatre questions pour faire son choix. Le DSL interne est fortement déconseillé si il y a pas de besoins de AVOPT [fn:AVOPT] et si une notation du domain doit être respecté strictement.
 
     #+NAME: How-to-Choose-between-External-and-Internal-DSL
     #+CAPTION: Diagramme aidant à faire le choix du DSL externe ou interne \cite{Mernik-et-al-2005}
-    # [[./pictures/How-to-Choose-between-External-and-Internal-DSL]].png
+    #+ATTR_LATEX: :width 10cm
+    [[./pictures/How-to-Choose-between-External-and-Internal-DSL.png]]
 
 * Succès et échecs
 
@@ -345,5 +346,6 @@
 [fn:Yacc-and-Bison] Yacc et Bison sont deux équivalents informatique à BNF
 [fn:Not-only-Grammars] Les automates et les expressions régulière permettent aussi la définition de syntaxes
 [fn:Is-Embedded-DSL-equivalent-to-Internal-DSL] Le fait que les DSEL soit équivalents aux DSL internes est discuté dans la littérature
+[fn:AVOPT] AVOPT pour analise, vérification, optimisation, parallèlisation et transformation
 [fn:cl-json-reader] cl-json-reader : https://github.com/qinix/cl-json-reader
 [fn:Scala-LMS] Scala-LMS : https://scala-lms.github.io/
