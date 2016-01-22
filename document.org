@@ -136,13 +136,13 @@
 
 ** Bonnes et mauvaises pratiques
 
-   Le design d'un /Domain-Specific Language/ requière des connaissances en développement de langage ainsi qu'une connaissance du domaine \cite{Mernik-et-al-2005}. C'est un point très important car le domaine est au centre du problème.
+   Le processus de création d'un /Domain-Specific Language/ requière des connaissances en développement de langage ainsi qu'une connaissance du domaine \cite{Mernik-et-al-2005}. C'est un point très important car le domaine est au centre du problème.
 
-   Pour apporter de la méthodologie dans la conception de DSL, \cite{Karsai-et-al-2009} proposent une ligne de conduite. Ils insistent sur le fait de se rapprocher des experts, ne pas hésiter à poser des questions. Il est conseillé des rester proche du domaine, de ne pas généraliser si cela ne semble utile à aucun cas clair d'utilisation. Il faut utiliser une notation descriptive, concis mais pas trop, et rendre possible les commentaires qui sont là pour corriger tout manque de clarté.
+   Pour apporter de la méthodologie dans ce processus, \cite{Karsai-et-al-2009} proposent une ligne de conduite. Ils insistent sur le fait de se rapprocher des experts, ne pas hésiter à poser des questions. Il est conseillé des rester proche du domaine, de ne pas généraliser si cela ne semble utile à aucun cas clair d'utilisation. Il faut utiliser une notation descriptive, concis mais pas trop, et rendre possible les commentaires qui sont là pour corriger tout manque de clarté.
 
-   Si ces conseils semblent généralistes, ce n'est pas le cas des problèmes relevé par \cite{Kelly-and-Pohjonen-2009} grâce à une analyse de plusieurs DSL. Si le manque de compréhension métier des problématiques est cité, les mauvaises pratiques les plus fréquentes restent : décider la solution initiale comme inaltérable ; laisser stagner le langage ; et utiliser le code source comme modèle. Diverses choses sont aussi énoncées, parmi elles à éviter : mettre l'accent sur un sous-domaine ; prédéterminer le paradigme ; ignorer le cas réel d'utilisation ; ou encore considérer que tout le monde comprend la solution.
+   Si ces conseils semblent généralistes, ce n'est pas le cas des problèmes relevé par \cite{Kelly-and-Pohjonen-2009} grâce à une analyse de plusieurs DSL. Si le manque de compréhension métier des problématiques est cité, les mauvaises pratiques les plus fréquentes sont : décider la solution initiale comme inaltérable ; laisser stagner le langage ; et utiliser le code source comme modèle. Divers points sont aussi énoncés, parmi eux à éviter : mettre l'accent sur un sous-domaine ; prédéterminer le paradigme ; ignorer le cas réel d'utilisation ; ou encore considérer que tout le monde comprend la solution.
 
-** Qualification du DSL
+** Propriétés d'un DSL
 
    Il est compliqué de juger un DSL sans critère précis. \cite{Karsai-et-al-2009} ont réunis les différents facteurs de succès rencontrés dans la littérature sur les DSL. On y trouve : l'apprenabilité (L), la convivialité (U), l'expressivité (E), la réutilisabilité (R), le coût de développement (C) et la fiabilité (I) (voir tableau [[Success-Factors]]).
 
