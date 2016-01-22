@@ -86,8 +86,9 @@
   \end{titlepage}
 
   \begin{flushleft}
-    \textbf{Résumé :} \@abstract
+    \textbf{Résumé}
   \end{flushleft}
+  \@abstract
 
   \tableofcontents
   \thispagestyle{empty}
