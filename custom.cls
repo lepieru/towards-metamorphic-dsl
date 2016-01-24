@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{custom}
               [2015/02/02 v0.1
-                LaTeX document class for 
+                LaTeX document class for
                 Université Rennes 1]
 
 \LoadClassWithOptions{article}
@@ -24,26 +24,26 @@
 
 \renewcommand{\maketitle} {
   \begin{titlepage}
-    
+
     \begin{center}
-      
+
       \includegraphics[width=0.8\textwidth]{./pictures/style/header}\\[1cm]
       \textsc{\Large Stage de Master Recherche}
       \vspace{1cm}
-      
+
       \includegraphics[width=0.09\textwidth]{./pictures/style/rennes1}
       \includegraphics[width=0.09\textwidth]{./pictures/style/ens-rennes}
       \includegraphics[width=0.1\textwidth]{./pictures/style/insa-rennes}
       \includegraphics[width=0.08\textwidth]{./pictures/style/supelec}
       \includegraphics[width=0.06\textwidth]{./pictures/style/esir}
-      \includegraphics[width=0.07\textwidth]{./pictures/style/enssat} 
+      \includegraphics[width=0.07\textwidth]{./pictures/style/enssat}
       \includegraphics[width=0.07\textwidth]{./pictures/style/ubo}
-      \includegraphics[width=0.09\textwidth]{./pictures/style/enib} 
+      \includegraphics[width=0.09\textwidth]{./pictures/style/enib}
       \includegraphics[width=0.05\textwidth]{./pictures/style/tel-br}
       \includegraphics[width=0.05\textwidth]{./pictures/style/ensta}
       \includegraphics[width=0.05\textwidth]{./pictures/style/ubs}
 
-      \vspace{1cm} 
+      \vspace{1cm}
       \textsc{\Large Étude bibliographique}\\[0.5cm]
 
       % The title
@@ -94,5 +94,5 @@
   \thispagestyle{empty}
   \newpage
 
-  \setcounter{page}{1} 
+  \setcounter{page}{1}
 }
