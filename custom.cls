@@ -48,13 +48,13 @@
 
       % The title
       \HRule \\[0.4cm]
-             { \Large \bfseries {\@title} }\\[0.4cm]
+             { \Large \bfseries {\@title} }\\[0.2cm]
 
-             \HRule \\[1.5cm]
-             % The domain of the research 
-             \begin{flushleft}
-               \textbf{\@domain}
-             \end{flushleft}
+             \HRule \\[1cm]
+             % The domain of the research
+             \begin{centering}
+               \textbf{Domaine(s) : \@domain}
+             \end{centering} \\[1cm]
 
              % Author and supervisor(s)
              \begin{minipage}{0.4\textwidth}
