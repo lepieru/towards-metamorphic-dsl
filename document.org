@@ -1,4 +1,4 @@
-#+TITLE: Vers les Domain-Specific Languages Métamorphiques
+#+TITLE: Vers des langages dédiés métamorphiques
 #+AUTHOR: Pierre Le Gall
 
 #+OPTIONS: toc:nil
