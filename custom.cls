@@ -59,19 +59,22 @@
              % Author and supervisor(s)
              \begin{minipage}{0.4\textwidth}
                \begin{flushleft} \large
-                 \emph{Auteur :}\\
+                 \emph{\textbf{Auteur}}\\
                  \@author
                \end{flushleft}
              \end{minipage}
              \begin{minipage}{0.4\textwidth}
                \begin{flushright} \large
-                 \emph{Encadrants :} \\
+                 \emph{\textbf{Encadrants}}\\
 
                  % Name(s) of your supervisor(s)
                  \@supervisorOne\\
                  \@supervisorTwo\\
 
+                 \vspace{0.5cm}
+
                  % Name of your team
+                 \emph{\textbf{Laboratoire}}\\
                  \@team
                \end{flushright}
              \end{minipage}
