@@ -84,7 +84,7 @@
 
 ** Externe et interne
 
-   Les /Domain-Specific Languages/ se divisent en deux grande catégories : les DSL externes et les DSL internes.
+   Les /Domain-Specific Languages/ se divisent en deux grandes catégories : les DSL externes et les DSL internes.
 
 *** DSL externes
 
@@ -195,7 +195,7 @@
 
 * Méthodes et implémentations
 
-  Les sujets de cette section sont les méthodes et les outils permettant de construire des langages dédiés. Nous parlerons des capacités de certains GPL à accueillir des DSL et de /frameworks/ aidant la conception de DSL.
+  Les sujets de cette section sont les méthodes et les implémentations. Nous parlerons des capacités de certains GPL à accueillir des DSL et de /frameworks/ aidant la conception de DSL.
 
 ** Fonctionnalités des langages
 
