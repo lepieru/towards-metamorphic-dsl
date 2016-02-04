@@ -60,18 +60,18 @@
 
    #+NAME: GPL-or-DSL
    #+CAPTION: Gradualité entre GPL et DSL \cite{Voelter-2013}
-   |                            | *GPLs*                         | *DSLs*                     |
-   |----------------------------+--------------------------------+----------------------------|
-   | *Domain*                   | large and complex              | smaller and well-defined   |
-   | *Language size*            | large                          | small                      |
-   | *Turing completeness*      | always                         | often not                  |
-   | *User-defined abstraction* | sophisticated                  | limited                    |
-   | *Execution*                | via intermediate GPL           | native                     |
-   | *Lifespan*                 | years to decades               | month to years             |
-   | *Designed by*              | guru or committee              | few engineers and experts  |
-   | *User community*           | large, anonymous and widspread | small, accessible an local |
-   | *Evolution*                | slow, often standardized       | fast-paced                 |
-   | *Incompatibility changes*  | almost impossible              | feasible                   |
+   |                            | *GPLs*                         | *DSLs*                      |
+   |----------------------------+--------------------------------+-----------------------------|
+   | *Domain*                   | large and complex              | smaller and well-defined    |
+   | *Language size*            | large                          | small                       |
+   | *Turing completeness*      | always                         | often not                   |
+   | *User-defined abstraction* | sophisticated                  | limited                     |
+   | *Execution*                | via intermediate GPL           | native                      |
+   | *Lifespan*                 | years to decades               | month to years              |
+   | *Designed by*              | guru or committee              | few engineers and experts   |
+   | *User community*           | large, anonymous and widspread | small, accessible and local |
+   | *Evolution*                | slow, often standardized       | fast-paced                  |
+   | *Incompatibility changes*  | almost impossible              | feasible                    |
 
    \cite{Fowler-2005} cite plusieurs traditions dans le DSL, on y retrouve les /Unix Little Languages/ (/mini-langages/ pour le système construit avec la /tool-chain/ Unix), les dialectes de Lisp (probablement l'exemple le plus fort pour exprimer un DSL dans le langage lui même), l'/Adaptive Model Object/ (très productif mais demande de connaître l'architecture du projet), l'XML (sa grammaire et ses outils de /parsing/ disponibles mais cependant pas forcément facile à lire), ou encore les /GUI builders/ (permettant un syntaxe plus déclarative et moins procédurale). Ces outils sont puissants : les /Unix Little Languages/ permettent de configurer tout un système grâce à de simples fichiers textes. Les Lisp permettent de redéfinir toute une syntaxe dans le GPL lui même. L'/Adaptive Model Object/ permet de rendre le métier expressif dans une application programmée dans un langage orienté objet. L'XML permet de proposer une syntaxe concrète qui peut être réutilisées pour diverses représentations. Et enfin, les /GUI builders/ ont permis d'abstraire la déclaration des interfaces homme-machine (voir =HTML= ou encore =QML=).
 
@@ -90,7 +90,7 @@
 
     Les DSL externes sont construits à l'aide outils semblables à ceux utilisés pour les GPL. Les concepteurs ont la liberté de construire les éléments de la grammaire (en s'inspirant ou non de langages existants) ainsi que de sélectionner les principaux concepts applicables. Souvent accompagnés d'outils spécifiques, ils sont capables de fonctionner en /standalone/. Cela permet de s'affranchir de diverses contraintes, notamment celles du langage au coeur de la solution métier \cite{Karsai-et-al-2009}. Ce nouveau langage est indépendant. \cite{Fowler-2005} liste plusieurs problèmes relatifs aux DSL externes. Ils commencent par créer une barrière symbolique avec le langage de base, ce qui rend l'interopérabilité difficile. L'utilisateur ayant en main un langage limité, il n'est pas évident de pouvoir effectuer une action hors de la portée du langage. Fowler continue en utilisant le terme cacophonie des langages : si un langage demande un effort d'apprentissage, peut-être que les multiplier est une mauvaise idée. Cependant, il ne faut pas oublier que ces langages ont pour but d'être simple, limitant la valeur de cette dernière critique.
 
-    Si un DSL (voir l'exemple avec SQL figure [[External-DSL-Example-with-SQL]]) limite l'utilisateur dans le cadre de la manipulation de données provenant de bases de données relationnelles, il ne faut pas voir cette contrainte comme un simple inconvénient. Ceci encourage l'écriture de code plus compréhensible en étant plus déclaratif dans un contexte bien défini. De plus, si l'utilisateur n'a pas accès à toutes le fonctionnalités du système, le DSL est aussi une sécurité contre les maladresses. Si cela est aussi vrai pour le DSL interne, il l'est particulièrement pour le DSL externe qui restreint l'utilisateur dans le cadre du domaine.
+    Si un DSL (voir l'exemple avec SQL figure [[External-DSL-Example-with-SQL]]) limite l'utilisateur dans le cadre de la manipulation de données provenant de bases de données relationnelles, il ne faut pas voir cette contrainte comme un simple inconvénient. Ceci encourage l'écriture de code plus compréhensible en étant plus déclaratif dans un contexte bien défini. De plus, si l'utilisateur n'a pas accès à toutes le fonctionnalités du système, le DSL est aussi une sécurité contre les maladresses. Si c'est aussi vrai pour le DSL interne, cela l'est particulièrement pour le DSL externe qui restreint l'utilisateur dans le cadre du domaine.
 
     #+NAME: External-DSL-Example-with-SQL
     #+CAPTION: Un exemple de DSL externe avec SQL
@@ -140,7 +140,7 @@
 
    Pour apporter de la méthodologie dans ce processus, \cite{Karsai-et-al-2009} proposent une ligne de conduite. Ils insistent sur le fait de se rapprocher des experts, ne pas hésiter à poser des questions. Il est conseillé de rester proche du domaine, de ne pas généraliser si cela ne semble utile à aucun cas clair d'utilisation. Il faut utiliser une notation descriptive, concis mais pas trop, et rendre possible les commentaires qui sont là pour corriger tout manque de clarté.
 
-   Si ces conseils semblent généralistes, ce n'est pas le cas des problèmes relevé par \cite{Kelly-and-Pohjonen-2009} grâce à une analyse de plusieurs DSL. Si le manque de compréhension métier des problématiques est cité, les mauvaises pratiques les plus fréquentes sont : décider la solution initiale comme inaltérable ; laisser stagner le langage ; et utiliser le code source comme modèle. Divers points sont aussi énoncés, parmi eux à éviter : mettre l'accent sur un sous-domaine ; prédéterminer le paradigme ; ignorer le cas réel d'utilisation ; ou encore considérer que tout le monde comprend la solution.
+   Si ces conseils semblent généralistes, ce n'est pas le cas des problèmes relevé par \cite{Kelly-and-Pohjonen-2009} grâce à une analyse de plusieurs DSL. Si le manque de compréhension métier des problématiques est cité, les mauvaises pratiques les plus fréquentes sont : rendre la solution initiale comme inaltérable ; laisser stagner le langage ; et utiliser le code source comme modèle. Divers points sont aussi énoncés, parmi eux à éviter : mettre l'accent sur un sous-domaine ; prédéterminer le paradigme ; ignorer le cas réel d'utilisation ; ou encore considérer que tout le monde comprend la solution.
 
 ** Propriétés d'un DSL
 
@@ -159,7 +159,7 @@
    |                        | is specific to that domain and limits the       |
    |                        | possible scenarios that can be expressed.       |
    | *(R) Reusability*      | With a DSL, reuse is possible at the model      |
-   |                        | level, making it easier ti reuse partial or     |
+   |                        | level, making it easier to reuse partial or     |
    |                        | even entire solutions, rather than pieces of    |
    |                        | source code.                                    |
    | *(C) Development Cost* | The DSL hepts developers to model domain        |
@@ -169,7 +169,7 @@
    |                        | sources code is generated automatically.        |
    |                        | This lowers developement costs and shortens     |
    |                        | time-to-market.                                 |
-   | *(I) Reliability*      | In addition toreducing development cost,        |
+   | *(I) Reliability*      | In addition to reducing development cost,       |
    |                        | automation of large parts of the development    |
    |                        | process leads to fewers errors.                 |
 
@@ -207,7 +207,7 @@
    (json-reader:enable-json-syntax)
    (let ((x {
               "foo": 1,
-              "bar": ["a", "b", "c"]
+              "bar": ["a", "b", "c"],
               "baz": { foo: 42 }
             } ))
      (assert (hash-table-p x))
@@ -223,7 +223,7 @@
    Les langages dynamiques (c'est-à-dire à typage dynamique, par opposition aux langages statiques) sont aussi plus permissifs. Un bon exemple est l'exploitation de la méta-programmation dans le /framework/ web =Ruby on Rails= \cite{Fowler-2005}. =Smalltalk=, lui aussi dynamique, permet beaucoup d'expressivité grâce à son système de méthode en plusieurs parties (voir figure [[Smalltalk-Example]]). Pour \cite{Renggli-and-Girba-2009}, Smalltalk apparaît comme le plus adapté (voir tableau [[Smalltalk-as-the-most-Suitable]]). En effet, sa syntaxe minimaliste, les forces du paradigme objet et ses capacités de réflexion font de lui un très bon outil pour construire des DSL.
 
    #+NAME: Smalltalk-Example
-   #+CAPTION: SQL DSL en Smalltalk grâce aux méthodes à plusieurs parties
+   #+CAPTION: SQL DSL en Smalltalk
    #+BEGIN_SRC smalltalk
    postsToShow := Posts findAll
                         where:   [:each | each isPublished] ;
@@ -291,7 +291,7 @@
   Les critères de qualité du DSL restent difficiles à mesurer \cite{Albuquerque-et-al-2014} et sont encore trop jeunes pour être utilisés industriellement pour les évaluations. Les environnements de /language workbenck/ simplifient la création et l'usage de langage de programmation \cite{Erdweg-et-al-2015}. Spoofax, Xtext et MPS sont des solutions techniques qui ont hérité de ce principe. Grâce au système de projection (ex. MPS), la forme abstraite est manipulée via les diverses vues disponibles (voir figure [[Manipulating-representations-with-a-Language-Workbench]]). L'information est présentée sous différentes formes, permettant si besoin de cacher le contenu inutile. L'artéfact éditable permet d'uniformiser la forme, ce qui répond à une problématique forte. Cette vision était déjà à l'époque défini comme la « nouvelle génération de feuille de calcul » \cite{Fowler-2005} : un environnement ou l'utilisateur lambda peut rapidement devenir apte à user de fonctionnalités avancées.
 
   #+NAME: Manipulating-representations-with-a-Language-Workbench
-  #+CAPTION: Manipulation des représentation avec le /language workbench/ \cite{Fowler-2005}.
+  #+CAPTION: Manipulation des représentations avec le /language workbench/ \cite{Fowler-2005}.
   #+ATTR_LATEX: :width 13cm
   [[./pictures/Manipulating-representations-with-a-Language-Workbench.png]]
 
