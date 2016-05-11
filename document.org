@@ -21,20 +21,20 @@
 * Les /Domain-Specific Languages/
 ** La notion de langage
 
-   Un langage est la composition d'une syntaxe (sa forme) ainsi que d'une sémantique (son sens). On peut voir la syntaxe comme la donnée et la sémantique comme l'information, c'est-à-dire l'interprétation sur la donnée \cite{Harel-and-Rumpe-2004}. Cela s'applique à tous les langages, des langues naturelles (anglais, français, /etc./) aux langages de programmation.
+   Un langage est la composition d'une syntaxe (sa forme) ainsi que d'une sémantique (son sens). On peut voir la syntaxe comme la donnée et la sémantique comme l'information, c'est-à-dire l'interprétation sur la donnée \cite{Harel-and-Rumpe-2004}. Cela s'applique à tous les langages, des langues naturelles (anglais, français, /etc./) aux langages formels (mathématiques, langages de programmation, /etc./.).
 
 *** La syntaxe
 
-    La syntaxe (concrète) choisie est la représentation que l'on se fait du langage \cite{Fowler-2005}. On distingue deux types de syntaxe concrète : les syntaxes textuelles qui sont composées d'une suite de caractères et les syntaxes graphiques qui sont construites avec des éléments plus visuels tel que des flèches, des formes, /etc./ En mathématique, elles sont le plus souvent définies grâce à une grammaire [fn:Not-only-Grammars]. Une grammaire est un ensemble de règles écrites dans un langage formel (on parle de grammaire formelle). Ces règles décrivent comment former des « phrases » en fonction des « mots » rencontrés. Le langage BNF [fn:Yacc-and-Bison] est un exemple d'outil permettant la définition de grammaire \cite{Garshol-2008} (voir figure [[BNF-Example]]), mettant en évidence les symboles terminaux et non-terminaux de la syntaxe.
+    La syntaxe (concrète) choisie est la représentation que l'on se fait du langage \cite{Fowler-2005}. On distingue deux types de syntaxe concrète : les syntaxes textuelles qui sont composées d'une suite de caractères et les syntaxes graphiques qui sont construites avec des éléments tel que des boîtes, des flèches, /etc./ En mathématique, elles sont le plus souvent définies grâce à une grammaire [fn:Not-only-Grammars]. Une grammaire est un ensemble de règles qui contraignent un langage. Ces règles décrivent comment former des « phrases » en fonction des « mots » rencontrés. Le langage BNF [fn:Yacc-and-Bison] est un exemple d'outil permettant la définition de grammaire \cite{Garshol-2008} (voir figure [[BNF-Example]]), mettant en évidence les symboles terminaux et non-terminaux de la syntaxe.
 
     #+CAPTION: Exemple d'utilisation de BNF (Backus Naur Form) : définition de la représentation textuelle d'une valeur numérique (entier et flottant)
     #+NAME: BNF-Example
     #+BEGIN_SRC bnf
-    numeric := float | integer
-    float   := dstring '.' dstring | - dstring '.' dstring
-    integer := dstring | '-' dstring
-    dstring := digit dstring | digit
-    digit   := '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+    <numeric> ::= <integer> | <float>
+    <integer> ::= <digits> | '-' <digits>
+    <float>   ::= <integer> '.' <digits>
+    <digits>  ::= <digit> <digits> | <digit>
+    <digit>   ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
     #+END_SRC
 
     La syntaxe concrète s'oppose à la syntaxe abstraite. Cette dernière est une altération de la syntaxe concrète. Cette forme est structurée de façon à être adaptée à une utilisation par la machine. Elle prend très souvent la forme d'un arbre (appelé Arbre de Syntaxe Abstraite, /Abstract Syntax Tree/ ou AST) (voir figure [[Abstract-Syntax-Tree-Example]]) où chaque noeud représente un élément, qui peut lui même être composé de plusieurs sous-éléments. Certains détails de la syntaxe concrète peuvent être ôtés. Il est donc possible d'arriver à un même AST avec des syntaxes concrètes différentes. On peut dire qu'un langage peut avoir deux syntaxes concrètes, ou deux langages qui partagent la même syntaxe abstraite \cite{Fowler-2005}.
@@ -48,11 +48,11 @@
 
 *** La sémantique
 
-    La sémantique est le sens que l'on donne à un langage. Grâce à l'analyse grammaticale, une forme plus structurée de la syntaxe en entrée est obtenue. C'est sur cette structure que l'on peut travailler pour en déduire le comportement attendu. Les mathématiques exposent les règles de transformation en sémantique opérationnelle, en sémantique dénotationnelle ou en sémantique axiomatique que nous n'aborderons pas ici. Les programmes, appelés compilateur, ont pour but de transformer cette structure de donnée en un autre langage, comme le langage machine par exemple. Cela dit, le sens peut être informel par une spécification via une langue naturelle.
+    La sémantique est le sens que l'on donne à un langage. Grâce à l'analyse grammaticale, une forme plus structurée de la syntaxe en entrée est obtenue. C'est sur cette structure que l'on peut travailler pour en déduire le comportement attendu. Les mathématiques exposent les règles de transformation en sémantique opérationnelle, en sémantique dénotationnelle ou en sémantique axiomatique que nous n'aborderons pas ici. Les compilateurs sont les programmes qui transforment la syntaxe abstraite d'un langage. Cela peut avoir comme but de rendre le programme exécutable par la machine.
 
 ** Définir le DSL
 
-   Les /Domain-Specific Languages/, aussi appelés /Little Languages/ \cite{Hudak-1996}, sont des langages sur mesure par rapport à un domaine d'application. Leur raison d'être est d'exprimer au mieux ce domaine. En s'abstenant d'exposer les problématiques techniques, ils s'ouvrent à un « public plus large » \cite{Mernik-et-al-2005}. Un DSL adapté réduit considérablement le fossé entre le métier et les documents produits. Bien utilisés, ils deviennent un nouveau vecteur de communication.
+   Les /Domain-Specific Languages/, aussi appelés /Little Languages/ \cite{Hudak-1996}, sont des langages sur mesure par rapport à un domaine d'application. Leur raison d'être est d'exprimer au mieux le métier. En s'abstenant d'exposer les problématiques techniques, ils s'ouvrent à un « public plus large » \cite{Mernik-et-al-2005}. Un DSL adapté réduit considérablement le fossé entre le métier et les documents produits. Bien utilisés, ils deviennent un nouveau vecteur de communication.
 
    Les DSL s'opposent aux /General Purpose Languages/ (GPL) ; c'est-à-dire les langages de programmation conçus dans le but de résoudre un large panel de problèmes. S'ils sont pensés pour être génériques, les DSL diminuent fortement ce niveau d'abstraction réduisant les ambiguïtés \cite{Hudak-1996}. De ce fait, le DSL permet un gain de productivité important. L'étude de l'impact de ACA.NET \cite{Hermans-et-al-2009} conclut que l'utilisation de DSL permet une baisse des coûts de développement et une meilleure réutilisabilité du code produit.
 
@@ -60,20 +60,20 @@
 
    #+NAME: GPL-or-DSL
    #+CAPTION: Gradualité entre GPL et DSL \cite{Voelter-2013}
-   |                            | *GPLs*                         | *DSLs*                      |
-   |----------------------------+--------------------------------+-----------------------------|
-   | *Domain*                   | large and complex              | smaller and well-defined    |
-   | *Language size*            | large                          | small                       |
-   | *Turing completeness*      | always                         | often not                   |
-   | *User-defined abstraction* | sophisticated                  | limited                     |
-   | *Execution*                | via intermediate GPL           | native                      |
-   | *Lifespan*                 | years to decades               | month to years              |
-   | *Designed by*              | guru or committee              | few engineers and experts   |
-   | *User community*           | large, anonymous and widspread | small, accessible and local |
-   | *Evolution*                | slow, often standardized       | fast-paced                  |
-   | *Incompatibility changes*  | almost impossible              | feasible                    |
+   |                            | *GPLs*                          | *DSLs*                      |
+   |----------------------------+---------------------------------+-----------------------------|
+   | *Domain*                   | large and complex               | smaller and well-defined    |
+   | *Language size*            | large                           | small                       |
+   | *Turing completeness*      | always                          | often not                   |
+   | *User-defined abstraction* | sophisticated                   | limited                     |
+   | *Execution*                | via intermediate GPL            | native                      |
+   | *Lifespan*                 | years to decades                | month to years              |
+   | *Designed by*              | guru or committee               | few engineers and experts   |
+   | *User community*           | large, anonymous and widespread | small, accessible and local |
+   | *Evolution*                | slow, often standardized        | fast-paced                  |
+   | *Incompatibility changes*  | almost impossible               | feasible                    |
 
-   \cite{Fowler-2005} cite plusieurs traditions dans le DSL, on y retrouve les /Unix Little Languages/ (/mini-langages/ pour le système construit avec la /tool-chain/ Unix), les dialectes de Lisp (probablement l'exemple le plus fort pour exprimer un DSL dans le langage lui même), l'/Adaptive Model Object/ (très productif mais demande de connaître l'architecture du projet), l'XML (sa grammaire et ses outils de /parsing/ disponibles mais cependant pas forcément facile à lire), ou encore les /GUI builders/ (permettant un syntaxe plus déclarative et moins procédurale). Ces outils sont puissants : les /Unix Little Languages/ permettent de configurer tout un système grâce à de simples fichiers textes. Les Lisp permettent de redéfinir toute une syntaxe dans le GPL lui même. L'/Adaptive Model Object/ permet de rendre le métier expressif dans une application programmée dans un langage orienté objet. L'XML permet de proposer une syntaxe concrète qui peut être réutilisées pour diverses représentations. Et enfin, les /GUI builders/ ont permis d'abstraire la déclaration des interfaces homme-machine (voir =HTML= ou encore =QML=).
+   \cite{Fowler-2005} cite plusieurs traditions dans le DSL, on y retrouve les /Unix Little Languages/ (/mini-languages/ pour le système construit avec la /tool-chain/ Unix), les dialectes de Lisp (probablement l'exemple le plus fort pour exprimer un DSL dans un GPL), l'/Adaptive Model Object/ (très productif mais demande de connaître l'architecture du projet), l'XML (équipé d'une grammaire par défaut et bien outillé, mais n'est pas forcément facile à lire), ou encore les /GUI builders/ (permettant un syntaxe plus déclarative et moins procédurale). Ces outils sont puissants : les /Unix Little Languages/ permettent de configurer tout un système grâce à de simples fichiers textes. Les Lisp permettent de redéfinir toute une syntaxe dans le GPL lui même. L'/Adaptive Model Object/ permet de rendre le métier expressif dans une application programmée dans un langage orienté objet. L'XML permet de proposer une syntaxe concrète qui peut être réutilisées pour diverses représentations. Et enfin, les /GUI builders/ ont permis d'abstraire la déclaration des interfaces homme-machine (voir =HTML= ou encore =QML=).
 
    \cite{Ward-1994} positionne le DSL au centre des problématiques logicielles (voir figure [[Middle-Out-Development]]) dans sa définition du /language-oriented programming/, c'est-à-dire entre le métier et les aspects techniques. En effet, le DSL permet une meilleure compréhension du domaine ainsi qu'une optimisation des exécutions côté machine \cite{Sujeeth-et-al-2013}.
 
@@ -105,7 +105,7 @@
 
     Gérer la communication entre plusieurs langages est une tâche compliqué, ce qui a pour conséquence que les développeurs font souvent le choix du DSL interne \cite{Renggli-and-Girba-2009}.
 
-    L'idée d'un DSL interne est d'utiliser les capacités d'un GPL pour exprimer un domaine. On parle aussi de /Embedded Domain-Specific Languages/ (EDSL ou DSEL) [fn:Is-Embedded-DSL-equivalent-to-Internal-DSL] \cite{Hudak-1996}. De cette manière, il n'existe pas de barrière symbolique. L'utilisateur peut utiliser un GPL sans avoir à comprendre toutes ses subtilités. De ce point de vue, il n'y plus de limite artificielle, toutes les capacités du langage hôte sont disponibles. Toutefois, il est possible de se perdre dans ce nuage de fonctionnalités \cite{Fowler-2005}. L'approche interne demande moins d'effort que l'approche externe pour les concepteurs \cite{Kamin-1998}, impactant directement les coûts de développement. En effet, il est possible de profiter de l'intégration du GPL hôte (/parser/, /debbuger/, compilateur, coloration syntaxique, /etc./) ; à noter que la solution finale tend à être moins adaptée (ex. retours d'erreurs) qu'avec un DSL externe. Malheureusement, il se peut qu'il soit compliqué d'adapter un DSL aux contraintes syntaxiques du GPL hôte choisi rendant le résultat peu efficace pour l'expert métier. C'est le cas pour la plupart des GPL proposant une syntaxe proche du langage C \cite{Fowler-2005, Stefik-and-Siebert-2013}.
+    L'idée d'un DSL interne est d'utiliser les capacités d'un GPL pour exprimer un domaine. On parle aussi de /Embedded Domain-Specific Languages/ (EDSL ou DSEL) [fn:Is-Embedded-DSL-equivalent-to-Internal-DSL] \cite{Hudak-1996}. De cette manière, il n'existe pas de barrière symbolique. L'utilisateur peut utiliser un GPL sans avoir à comprendre toutes ses subtilités. De ce point de vue, il n'y plus de limite artificielle, toutes les capacités du langage hôte sont disponibles. Toutefois, il est possible de se perdre dans ce nuage de fonctionnalités \cite{Fowler-2005}. L'approche interne demande moins d'effort que l'approche externe pour les concepteurs \cite{Kamin-1998}, impactant directement les coûts de développement. En effet, il est possible de profiter de l'intégration du GPL hôte (/parser/, /debbuger/, compilateur, coloration syntaxique, /etc./) ; à noter que la solution finale tend à être moins adaptée (ex. retours d'erreurs) qu'avec un DSL externe. Malheureusement, il se peut qu'il soit compliqué d'adapter un DSL aux contraintes syntaxiques du GPL hôte choisi rendant le résultat peu efficace pour l'expert métier. C'est le cas pour la plupart des GPL proposant une syntaxe fortement inspirée du langage C \cite{Fowler-2005, Stefik-and-Siebert-2013}.
 
     #+NAME: Internal-DSL-example
     #+CAPTION: Un exemple de DSL interne, équivalent du DSL externe (=SQL=) en figure [[[[External-DSL-Example-with-SQL]], avec la bibliothèque =jOOQ= (=Java=)
@@ -115,7 +115,7 @@
           .orderBy(CAT.NAME)
     #+END_SRC
 
-    \cite{Gibbons-and-Wu-2014} distinguent le DSL interne peu profond (/shallow DSEL/) et profond (/deep DSEL/). Le /shallow DSEL/ est le fait de se servir de la syntaxe du langage hôte comme base de formalisation de notion du domaine. Si nous avons "=chat + chien=", cela doit aussi avoir du sens dans le langage hôte. À l'inverse le /deep DSEL/ ne se contente pas simplement d'exécuter la chaîne en entrée, il en crée un AST. Le comportement de cette structure peut être défini par la suite. Ce deuxième type de DSL nous donne plus de contrôle sur l'exécution des entrées.
+    \cite{Gibbons-and-Wu-2014} distinguent le DSL interne peu profond (/shallow DSEL/) et profond (/deep DSEL/). Le /shallow DSEL/ est le fait de se servir de la syntaxe du langage hôte comme base de formalisation de notion du domaine. Si nous avons "=chat + chien=", cela doit aussi avoir du sens dans le langage hôte. À l'inverse le /deep DSEL/ ne se contente pas simplement d'exécuter la chaîne en entrée, il en crée un AST. Le comportement de cette structure peut être défini par la suite. Ce deuxième type de DSL nous permet plus de liberté dans la construction de la sémantique des entrées.
 
     #+NAME: DSL-Types
     #+CAPTION: Les différents types de DSL (source : https://queue.acm.org/detail.cfm?id=2617811)
