@@ -287,21 +287,21 @@
 
 * Constats et perspectives
 
-  Les critères de qualité du DSL restent difficiles à mesurer \cite{Albuquerque-et-al-2014} et sont encore trop jeunes pour être utilisés industriellement pour les évaluations. Les environnements de /language workbenck/ simplifient la création et l'usage de langage de programmation \cite{Erdweg-et-al-2015}. Spoofax, Xtext et MPS sont des solutions techniques qui ont hérité de ce principe. Grâce au système de projection (ex. MPS), la forme abstraite est manipulée via les diverses vues disponibles (voir figure [[Manipulating-representations-with-a-Language-Workbench]]). L'information est présentée sous différentes formes, permettant si besoin de cacher le contenu inutile. L'artéfact éditable permet d'uniformiser la forme, ce qui répond à une problématique forte. Cette vision était déjà à l'époque défini comme la « nouvelle génération de feuille de calcul » \cite{Fowler-2005} : un environnement ou l'utilisateur lambda peut rapidement devenir apte à user de fonctionnalités avancées.
+  Les critères de qualité du DSL restent difficiles à mesurer \cite{Albuquerque-et-al-2014} et sont encore trop jeunes pour être utilisés industriellement pour les évaluations. Les /Language Workbenches/ simplifient la création et l'usage de langage exécutable métier \cite{Erdweg-et-al-2015}. Spoofax, Xtext et MPS sont des solutions techniques qui ont hérité des concepts du /Language-Oriented Programming/ exprimé par \cite{Ward-1994}. Grâce au système de projection (ex. MPS), la forme abstraite est manipulée via les diverses vues disponibles (voir figure [[Manipulating-representations-with-a-Language-Workbench]]). L'information est présentée sous différentes formes, permettant si besoin de cacher le contenu inutile selon la tâche en cours. L'artéfact éditable permet d'uniformiser la forme, ce qui répond à une problématique forte. Cette vision était déjà à l'époque défini comme la « nouvelle génération de feuille de calcul » \cite{Fowler-2005} : un environnement ou l'utilisateur lambda peut rapidement devenir apte à user de fonctionnalités avancées.
 
   #+NAME: Manipulating-representations-with-a-Language-Workbench
-  #+CAPTION: Manipulation des représentations avec le /language workbench/ \cite{Fowler-2005}.
+  #+CAPTION: Manipulation des représentations avec le /Language Workbench/ \cite{Fowler-2005}.
   #+ATTR_LATEX: :width 13cm
   [[./pictures/Manipulating-representations-with-a-Language-Workbench.png]]
 
-  Jongler avec $n$ syntaxes (externes, et potentiellement plusieurs formes internes pour un même DSL) crée des barrières symboliques. Les /language workbenches/ ne sont pas toujours une solution acceptable car il peut toujours être difficile de savoir quelle forme adopter. \cite{Acher-et-al-2014} définissent le terme de /Metamorphic DSL/ avec l'expérience FAMILIAR. Le fait est que les syntaxes concrètes forcent le choix d'une forme qui n'est pas adapté à tous les cas d'utilisations. Le /Metamorphic DSL/ conceptualise la capacité d'un DSL à passer d'une syntaxe concrète à une autre selon le cas d'utilisation (tâche à effectuer, outil utilisé), permettant ainsi de ne pas avoir à choisir une mais plutôt plusieurs formes (voir figure [[Metamorphic-DSL-Usecase]]).
+  Jongler avec $n$ syntaxes (externes, et potentiellement plusieurs formes internes pour un même DSL) crée des barrières symboliques. Les /Language Workbenches/ ne sont pas toujours une solution acceptable car il peut toujours être difficile de savoir quelle forme adopter. \cite{Acher-et-al-2014} définissent le terme de /Metamorphic DSL/ avec l'expérience FAMILIAR. Le fait est que les syntaxes concrètes forcent le choix d'une forme qui n'est pas adapté à tous les cas d'utilisations. Le /Metamorphic DSL/ conceptualise la capacité d'un DSL à passer d'une syntaxe concrète à une autre selon le cas d'utilisation (tâche à effectuer, outil utilisé), permettant ainsi de ne pas avoir à choisir une mais plutôt plusieurs formes (voir figure [[Metamorphic-DSL-Usecase]]).
 
   #+NAME: Metamorphic-DSL-Usecase
   #+CAPTION: Cas d'utilisation du /Metamorphic DSL/ \cite{Acher-et-al-2014}.
   #+ATTR_LATEX: :width 15cm
   [[./pictures/Metamorphic-DSL-Usecase.png]]
 
-  Ces deux solutions ont une vision différente. Si le /language workbench/ propose une forme plus approprié pour un domaine donné, le /Metamorphic DSL/ donne le choix de la forme que peut prendre un DSL selon le cas d'utilisation.
+  Ces deux solutions ont une vision différente. Si le /Language Workbench/ propose une forme plus approprié pour un domaine donné, le /Metamorphic DSL/ veut donner le choix de la forme que peut prendre un DSL selon le cas d'utilisation.
 
 * Conclusion
 
