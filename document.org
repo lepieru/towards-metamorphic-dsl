@@ -321,8 +321,8 @@
 
 [fn:Cobol-Accronym] Cobol pour /Common Business-Oriented Language/
 [fn:Yacc-and-Bison] Yacc et Bison sont deux équivalents informatique à BNF
-[fn:Not-only-Grammars] Les automates et les expressions régulière permettent aussi la définition de syntaxes
-[fn:Is-Embedded-DSL-equivalent-to-Internal-DSL] Le fait que les DSEL soit équivalents aux DSL internes est discuté dans la littérature
+[fn:Not-only-Grammars] Les automates et les expressions régulières permettent aussi la définition de syntaxes
+[fn:Is-Embedded-DSL-equivalent-to-Internal-DSL] Le fait que les DSEL soient équivalents aux DSL internes est discuté dans la littérature
 [fn:cl-json-reader] cl-json-reader : https://github.com/qinix/cl-json-reader
 [fn:Scala-LMS] Scala-LMS : https://scala-lms.github.io/
 [fn:Xtend] Xtend : https://www.eclipse.org/xtend/
