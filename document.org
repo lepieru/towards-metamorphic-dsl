@@ -132,15 +132,15 @@
 
 * Succès et échecs
 
-  Nous abordons ici les comportements conseillés ou non dans le DSL, mettant le doigt sur les problématiques de la conception. Nous finirons pas présenter les critères de qualification d'un DSL.
+  Nous abordons ici les comportements conseillés ou non dans l'utilisation de DSL, tout en mettant le doigt sur les problématiques de la conception. Nous finirons pas présenter les critères de qualification d'un DSL.
 
 ** Bonnes et mauvaises pratiques
 
    Le processus de création d'un /Domain-Specific Language/ requière des connaissances en développement de langage ainsi qu'une connaissance du domaine \cite{Mernik-et-al-2005}. C'est un point très important car le domaine est au centre du problème.
 
-   Pour apporter de la méthodologie dans ce processus, \cite{Karsai-et-al-2009} proposent une ligne de conduite. Ils insistent sur le fait de se rapprocher des experts, ne pas hésiter à poser des questions. Il est conseillé de rester proche du domaine, de ne pas généraliser si cela ne semble utile à aucun cas clair d'utilisation. Il faut utiliser une notation descriptive, concis mais pas trop, et rendre possible les commentaires qui sont là pour corriger tout manque de clarté.
+   Pour apporter de la méthodologie dans ce processus, \cite{Karsai-et-al-2009} proposent une ligne de conduite. Ils insistent sur le fait de se rapprocher des experts, de ne pas hésiter à poser des questions. Il est conseillé de rester proche du domaine, de ne pas généraliser si cela ne semble utile à aucun cas clair d'utilisation. Il faut utiliser une notation descriptive, concis mais pas trop, et rendre possible les commentaires qui sont là pour corriger tout manque de clarté.
 
-   Si ces conseils semblent généralistes, ce n'est pas le cas des problèmes relevés par \cite{Kelly-and-Pohjonen-2009} grâce à une analyse de plusieurs DSL. Si le manque de compréhension métier des problématiques est cité, les mauvaises pratiques les plus fréquentes sont : rendre la solution initiale comme inaltérable ; laisser stagner le langage ; et utiliser le code source comme modèle. Divers points sont aussi énoncés, parmi eux à éviter : mettre l'accent sur un sous-domaine ; prédéterminer le paradigme ; ignorer le cas réel d'utilisation ; ou encore considérer que tout le monde comprend la solution.
+   Si ces conseils semblent généralistes, ce n'est pas le cas des problèmes relevés par \cite{Kelly-and-Pohjonen-2009} grâce à une analyse de plusieurs DSL. Si le manque de compréhension métier des problématiques est cité, les mauvaises pratiques les plus fréquentes sont : rendre la solution initiale inaltérable ; laisser le langage stagner ; ou encore utiliser le code source comme modèle. Moins fréquent, mais toujours à éviter, sont : mettre l'accent sur un sous-domaine ; prédéterminer le paradigme ; ignorer le cas réel d'utilisation ; ou encore considérer que tout le monde comprend la solution.
 
 ** Propriétés d'un DSL
 
@@ -150,7 +150,7 @@
    #+CAPTION: Facteurs de succès proposé par \cite{Hermans-et-al-2009}
    | *(L) Learnability*     | Developers have to learn an extra language,     |
    |                        | which takes time and effort. Furthermore,       |
-   |                        | as he domain changes the DSL has ot evolve      |
+   |                        | as the domain changes the DSL has to evolve     |
    |                        | and developers need to stay up-to-date.         |
    | *(U) Usability*        | Tools and methods supporting the DSL should     |
    |                        | be easy and convenient to use.                  |
@@ -162,7 +162,7 @@
    |                        | level, making it easier to reuse partial or     |
    |                        | even entire solutions, rather than pieces of    |
    |                        | source code.                                    |
-   | *(C) Development Cost* | The DSL hepts developers to model domain        |
+   | *(C) Development Cost* | The DSL helps developers to model domain        |
    |                        | concepts that otherwise are time-consuming to   |
    |                        | implement. The corresponding source code is     |
    |                        | generated automatically. The corresponding      |
